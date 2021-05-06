@@ -4,16 +4,20 @@
 		<div class="col">
 			<div class="row justify-content-around">
 				<div class="col-12 col-lg-5">
+          <div class="shopping-list-section"></div>
 					<app-shopping-edit></app-shopping-edit>
 				</div>
 				<div class="col-12 col-lg-5 my-5" >
 					<ul
 						class="list-group list-group-flush"
-						*ngFor="let ingredient of ingredients"
+						*ngFor="let ingredient of ingredients; let i = index"
 					>
 						<li class="list-group-item my-1 shadow-sm">
 							{{ ingredient.name }}
 							<span class="badge badge-info">{{ ingredient.amount }}</span>
+              <button type="button" class="ml-2 mb-1 close text-danger" aria-label="delete" (click)="deleteIng(i)">
+                <span aria-hidden="true">&times;</span>
+              </button>
 						</li>
 					</ul>
 				</div>

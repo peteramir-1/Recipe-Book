@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 })
 
 export class ShoppingListService {
-	ingChanged = new Subject<ingredient[]>();
 
   ingredients: ingredient[] = [
 		new ingredient('Apples', '5'),
@@ -16,21 +15,19 @@ export class ShoppingListService {
 
 	constructor() {}
 
-  getIng() {
-    return this.ingredients.slice();
-  }
-
 	addIng(name: string, number: string) {
 		this.ingredients.push(new ingredient(name, number));
-    this.ingChanged.next(this.ingredients.slice());
 	}
 
   addRecipeIng(ings: ingredient[]) {
       this.ingredients.push(...ings);
-      this.ingChanged.next(this.ingredients.slice())
   }
 
   addOneRecipeIng(ing: ingredient) {
     this.addIng(ing.name, ing.amount);
+  }
+
+  clear() {
+    this.ingredients.splice(0, this.ingredients.length)
   }
 }

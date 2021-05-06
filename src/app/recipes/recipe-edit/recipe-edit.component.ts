@@ -1,7 +1,7 @@
 import { recipeModel } from './../../models/recipe.model';
 import { RecipeService } from './../../services/recipe.service';
 import { ingredient } from './../../models/shoppingList.model';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,8 +14,14 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
   ingredients: ingredient[] = [];
   editMode: boolean;
+  recipeIndex: number;
+  submitBtn: String;
 
-  constructor(private router: Router, private route: ActivatedRoute, private recipeService:RecipeService) { }
+  constructor(
+      private router: Router,
+      private route: ActivatedRoute,
+      private recipeService:RecipeService
+    ) { }
 
   ngOnInit(): void {
     this.recipeForm  = new FormGroup({
@@ -38,13 +44,17 @@ export class RecipeEditComponent implements OnInit {
           imageUrl: data['recipe']['imgPath'],
         });
         this.ingredients = data['recipe']['ingredients'];
+        this.route.paramMap.subscribe((param: Params) => {
+          this.recipeIndex = +param.get('id')
+        })
+        this.submitBtn = 'Edit Recipe'
         this.editMode = true;
       } else {
+        this.submitBtn = 'Add New Recipe'
         this.editMode = false;
       }
     });
   }
-
 
   invalidInput(inputControl, validationError: string = 'invalid') {
     switch (validationError) {
@@ -77,9 +87,22 @@ export class RecipeEditComponent implements OnInit {
     this.ingredients.push(new ingredient(ingName.value, ingNum.value));
   }
 
+  deleteIng(index: number) {
+    this.ingredients.splice(index, 1)
+    console.log(this.ingredients)
+  }
+
   onSubmit() {
     if (this.editMode) {
-      return false
+      const NewRecipe = new recipeModel(
+        this.recipeForm.value.name,
+        this.recipeForm.value.description,
+        this.recipeForm.value.preparation,
+        this.recipeForm.value.imageUrl,
+        this.ingredients
+      );
+      this.recipeService.editRecipe(NewRecipe, this.recipeIndex - 1)
+      this.router.navigate(['recipes'])
     } else {
       const NewRecipe = new recipeModel(
         this.recipeForm.value.name,
@@ -89,8 +112,7 @@ export class RecipeEditComponent implements OnInit {
         this.ingredients
       )
       this.recipeService.addRecipe(NewRecipe);
-      console.log(this.recipeService.recipes)
-      // this.router.navigate(['recipes'])
+      this.router.navigate(['recipes'])
     }
   }
 }

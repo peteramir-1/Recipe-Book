@@ -1,5 +1,5 @@
 import { ingredient } from './../../models/shoppingList.model';
-import { ActivatedRoute, Data, Params } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Params, Router } from '@angular/router';
 import { recipeModel } from './../../models/recipe.model';
 import { RecipeService } from './../../services/recipe.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,28 +12,36 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 })
 export class RecipeDetailsComponent implements OnInit {
 	recipeSelected: recipeModel;
+  recipeIndex: number;
 
   // FontAwsome Icons
   cartIcon = faShoppingCart;
 
-
-	constructor(private recipeService: RecipeService, private route: ActivatedRoute) {}
+	constructor(
+      private recipeService: RecipeService,
+      private router: Router,
+      private route: ActivatedRoute
+    ) {}
 
 	ngOnInit(): void {
-    /*
-      Observable Checks for any id Params changes
-      in the url and fetch data from the service
-      according to query params
-    */
     this.route.data.subscribe((data: Data) => {
       this.recipeSelected = data['recipe']
-    })
-    }
+    });
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.recipeIndex = (+params.get('id')) - 1;
+    });
+  }
 
   // Function to send only one ingredient to shoppinglist component
 	addIngredient(ing: ingredient) {
 		this.recipeService.selectIng([ing]);
 	}
+
+  deleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipeIndex);
+    this.router.navigate(['recipes']);
+  }
 
   // Funtion to send Ingredients of the recipe to shoppinglist component
 	addAllIngredients() {

@@ -5,7 +5,7 @@
         <span class="sr-only">Loading...</span>
       </div>
       <button class="btn btn-primary float-right" [ngClass]="{'disabled': invalidInput('default')}" type="submit">
-        Submit
+        {{ submitBtn }}
       </button>
     </div>
   </div>
@@ -65,8 +65,11 @@
       <div class="col">
         <ul class="list-group" *ngIf="ingredients">
           <li class="list-group-item" *ngFor="let ing of ingredients; let i = index">
-            {{ i + 1 + '- ' + ing.name }}
+            {{ing.name }}
             <span class="badge badge-primary">{{ ing.amount }}</span>
+            <button type="button" class="ml-2 mb-1 close text-danger" aria-label="delete" (click)="deleteIng(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </li>
         </ul>
       </div>

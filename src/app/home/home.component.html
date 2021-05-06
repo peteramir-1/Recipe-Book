@@ -41,21 +41,29 @@
 	<article class="row">
 
     <!-- Recipe title -->
-		<header class="col-12 mt-5">
-			<h1 class="text-center font-weight-bold">Recipe Book</h1>
+		<header class="col-12 mt-5 mb-4">
+			<h1 class="text-center font-weight-bold">Recipes</h1>
 		</header>
 
     <!-- Recipe Content -->
     <section class="col-12 recipe-section">
-      <app-recipes></app-recipes>
-      <div class="recipe-overlay" [routerLink]="['/recipes', 'list']"></div>
-      <fa-icon routerLink="/recipes" class="text-dark arrow" [icon]="arrow"></fa-icon>
+      <ngb-carousel *ngIf="recipes">
+        <ng-template ngbSlide *ngFor="let recipe of recipes">
+          <div class="picsum-img-wrapper">
+            <img [src]="recipe.imgPath" style="width: 100%;" alt="Random first slide">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{ recipe.name }}</h3>
+            <p>{{ recipe.description }}</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
     </section>
   </article>
 </div>
 
 <!-- Founders -->
-<div class="founder-bg">
+<!-- <div class="founder-bg">
   <div class="container">
     <article class="row text-center py-5">
       <section class="col-12 mb-5">
@@ -75,4 +83,4 @@
       </section>
     </article>
   </div>
-</div>
+</div> -->

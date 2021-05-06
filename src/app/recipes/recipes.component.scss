@@ -13,13 +13,25 @@
   cursor: default;
 }
 
-.recipes-section {
-  background: #222
+.recipe-section {
+  background: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0px;
+  right: 0%;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  column-count: 3;
 }
 
-.card-columns {
-  @include media-breakpoint-only(xl) {
-    column-count: 4;
+.sidebar {
+  right: 50%
+}
+
+@include media-breakpoint-down(md) {
+  .recipes-section {
+    background: #222;
+    height: auto;
   }
 }
-

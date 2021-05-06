@@ -1,0 +1,25 @@
+.header-bg {
+  background: white;
+  color: rgb(10, 10, 10);
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  border-bottom: 0.1rem solid #2626264f;
+
+  .nav-link.active {
+    color: #eee;
+    background-color: #222;
+    &:active, &:hover {
+      color: #fff;
+      background: #222;
+    }
+  }
+
+  .nav-link {
+    color: #222;
+    &:active, &:hover {
+      color: #333;
+      background: #0000000b;
+    }
+  }
+}

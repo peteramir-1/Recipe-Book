@@ -1,0 +1,25 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables.scss";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+
+.recipe-item {
+  border: none;
+  cursor: pointer;
+}
+
+.recipe-opened {
+  background: rgb(0 0 0 / 91%);
+  color: white;
+  cursor: default;
+}
+
+.recipes-section {
+  background: #222
+}
+
+.card-columns {
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+  }
+}
+

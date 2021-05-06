@@ -1,0 +1,19 @@
+.spinner-border {
+  display: none;
+}
+
+form.ng-pending {
+  .spinner-border {
+    display: block;
+  }
+}
+
+input.ng-touched.ng-invalid :focus,
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(233 102 102 / 60%);
+}
+
+input.ng-touched.ng-invalid {
+  background-color: rgb(255, 218, 218) !important;
+}

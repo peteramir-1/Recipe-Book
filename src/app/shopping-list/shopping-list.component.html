@@ -1,0 +1,23 @@
+<div class="bg"></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="row justify-content-around">
+				<div class="col-12 col-lg-5">
+					<app-shopping-edit></app-shopping-edit>
+				</div>
+				<div class="col-12 col-lg-5 my-5" >
+					<ul
+						class="list-group list-group-flush"
+						*ngFor="let ingredient of ingredients"
+					>
+						<li class="list-group-item my-1 shadow-sm">
+							{{ ingredient.name }}
+							<span class="badge badge-info">{{ ingredient.amount }}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

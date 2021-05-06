@@ -1,0 +1,84 @@
+<div class="header-bg ">
+  <div class="container-fluid">
+
+    <!-- navbar -->
+    <nav class="row align-items-center py-2 shadow">
+
+      <!-- Logo -->
+      <section class="col">
+        <span class="h3 d-md-block d-none mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
+        <span class="h4 d-md-none d-block mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
+      </section>
+
+      <!-- Nav Links -->
+      <section class="col">
+        <ul class="nav nav-pills">
+
+          <!-- HomePage Link -->
+          <li class="nav-item mx-2">
+            <a
+              role="presentation"
+              class="nav-link"
+              routerLink="/home"
+              routerLinkActive="active"
+            >
+              Home
+            </a>
+          </li>
+
+          <!-- ShoppingList Link -->
+          <li class="nav-item mx-2">
+            <a
+              class="nav-link"
+              role="presentation"
+              routerLink="/shoppinglist"
+              routerLinkActive="active"
+            >
+              Shopping List
+            </a>
+          </li>
+
+          <!-- RecipeBook Link -->
+          <li class="nav-item mx-2">
+            <a
+              class="nav-link"
+              role="presentation"
+              routerLink="/recipes"
+              routerLinkActive="active"
+            >
+              Recipe Book
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Dropdown -->
+      <section class="col">
+        <div class="dropdown float-md-right float-left">
+          <button
+            type="button"
+            id="dropdown_manage"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            class="btn btn-dark dropdown-toggle"
+            appDropdown
+          >
+            Manage
+          </button>
+          <div aria-labelledby="dropdown_manage" class="dropdown-menu">
+            <a
+              class="dropdown-item"
+              [routerLink]="['/recipes', 'new']"
+              [queryParams]="{sidebarState: true}"
+            >
+              New Recipe
+            </a>
+            <a class="dropdown-item">Save Data</a>
+            <a class="dropdown-item">Fetch Data</a>
+          </div>
+        </div>
+      </section>
+    </nav>
+  </div>
+</div>

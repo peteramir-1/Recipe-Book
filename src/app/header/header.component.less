@@ -1,0 +1,50 @@
+@import '~@taiga-ui/core/styles/taiga-ui-local';
+
+.icon {
+  .transition(transform);
+
+  &_rotated {
+      transform: rotate(180deg);
+  }
+}
+
+.link[data-appearance='sidebar-btn'] {
+  display: block;
+  margin: 12px 2rem;
+  color: var(--tui-base-09);
+  outline: none;
+  border: none;
+  outline: 1px solid #333;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.link[data-appearance='sidebar-btn']:hover {
+  display: block;
+  margin: 12px 2rem;
+  color: var(--tui-base-07);
+  border: none;
+}
+
+.sidebar-icon {
+  padding: 0px 0.25rem;
+}
+
+.sidebar-btn {
+  background: none;
+  color: #333;
+}
+
+.sidebar-btn-icon,
+.link {
+  transition: color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+.sidebar-btn:hover {
+  .sidebar-btn-icon {
+    color: #8d8d8d !important;
+  }
+}
+

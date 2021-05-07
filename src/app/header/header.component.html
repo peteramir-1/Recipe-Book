@@ -3,81 +3,69 @@
 
     <!-- navbar -->
     <nav class="row align-items-center py-2 shadow">
-
-      <!-- Logo -->
-      <section class="col">
-        <span class="h3 d-md-block d-none mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
-        <span class="h4 d-md-none d-block mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
-      </section>
-
       <!-- Nav Links -->
       <section class="col">
-        <ul class="nav nav-pills">
+        <button
+          tuiButton
+          type="button"
+          class="sidebar-btn"
+          appearance="custom"
+          size="m"
+          (click)="toggle(true)"
+          (tuiActiveZoneChange)="toggle($event)"
+        >
+          <span class="sidebar-btn-icon">
+            <fa-icon [icon]="sidebarIcon" size="lg" sidebar-btn></fa-icon>
+          </span>
+          <div *tuiSidebar="open; direction: 'left'">
+            <div>
+              <a
+                *ngFor="let link of navLinks"
+                tuiButton
+                class="link"
+                shape="rounded"
+                appearance="sidebar-btn"
+                [routerLink]="link.url">
+                <fa-icon class="sidebar-icon" [icon]="link.icon"></fa-icon>
+                {{link.name}}
+              </a>
+            </div>
+          </div>
+        </button>
+      </section>
 
-          <!-- HomePage Link -->
-          <li class="nav-item mx-2">
-            <a
-              role="presentation"
-              class="nav-link"
-              routerLink="/home"
-              routerLinkActive="active"
-            >
-              Home
-            </a>
-          </li>
-
-          <!-- ShoppingList Link -->
-          <li class="nav-item mx-2">
-            <a
-              class="nav-link"
-              role="presentation"
-              routerLink="/shoppinglist"
-              routerLinkActive="active"
-            >
-              Shopping List
-            </a>
-          </li>
-
-          <!-- RecipeBook Link -->
-          <li class="nav-item mx-2">
-            <a
-              class="nav-link"
-              role="presentation"
-              routerLink="/recipes"
-              routerLinkActive="active"
-            >
-              Recipe Book
-            </a>
-          </li>
-        </ul>
+      <!-- Logo -->
+      <section class="col text-center">
+        <span class="tui-text_h1 d-md-block d-none mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
+        <span class="h4 d-md-none d-block mb-0" style="cursor: pointer;" routerLink="/home">Cook Chief</span>
       </section>
 
       <!-- Dropdown -->
       <section class="col">
-        <div class="dropdown float-md-right float-left">
-          <button
-            type="button"
-            id="dropdown_manage"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            class="btn btn-dark dropdown-toggle"
-            appDropdown
-          >
-            Manage
-          </button>
-          <div aria-labelledby="dropdown_manage" class="dropdown-menu">
-            <a
-              class="dropdown-item"
-              [routerLink]="['/recipes', 'new']"
-              [queryParams]="{sidebarState: true}"
-            >
-              New Recipe
-            </a>
-            <a class="dropdown-item">Save Data</a>
-            <a class="dropdown-item">Fetch Data</a>
-          </div>
-        </div>
+        <tui-hosted-dropdown
+            class="float-md-right float-left tui-space_right-5"
+            tuiDropdownAlign="left"
+            [content]="dropdown"
+            [(open)]="openDropdown"
+        >
+            <button tuiButton type="button" appearance='outline' shape='rounded' size='m' [iconRight]="arrow">
+                Manage
+            </button>
+        </tui-hosted-dropdown>
+        <ng-template #icon>
+            <tui-svg
+                src="tuiIconChevronDown"
+                class="icon"
+                [class.icon_rotated]="open"
+            ></tui-svg>
+        </ng-template>
+        <ng-template #dropdown>
+          <tui-data-list>
+            <button *ngFor="let item of items" tuiOption (click)="onClick(item)">
+              {{item}}
+            </button>
+          </tui-data-list>
+        </ng-template>
       </section>
     </nav>
   </div>

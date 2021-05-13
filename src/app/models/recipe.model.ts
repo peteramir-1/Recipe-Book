@@ -1,4 +1,4 @@
-import { ingredient } from './shoppingList.model';
+import { ingredient } from './ingredient.model';
 
 export class recipeModel {
 	constructor(

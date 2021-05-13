@@ -1,79 +1,140 @@
-// Media query VARS
-$xs: '575.98px';
-$sm: '767.98px';
-$md: '991.98px';
-$lg: '1199.98px';
-$xl: '1440.98px';
-
-// font-family: 'PT Serif', serif;
-// @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&display=swap');
-// font-family: 'Kiwi Maru', serif;
-// @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
-
-// font-family: 'Arimo', serif;
+// Fonts
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@600&display=swap');
 
+// Bootstrap imports
+@import "../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../node_modules/bootstrap/scss/variables.scss";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+
+// Intro style
+.intro-text,
+.intro-image {
+  height: 60vw;
+}
 
 // Intro section
 .title {
-  font-size: 4.5rem;
+  font-size: 3rem;
 }
 
-.intro-img-default {
-  height: 68vw;
-  margin-top: -40px;
-}
-
-.intro-img-sm {
-  height: 48vw;
-  margin-top: -50px;
-}
-
-// Recipe Section
-.recipe-section {
-  height: 50rem;
-  position: relative;
+// Intro image corners style
+.fork-container {
+  border-radius: 20px;
   overflow: hidden;
+  position: relative;
+  width: 70%;
+}
 
-  .recipe-overlay {
-    background: linear-gradient(transparent, transparent, white, white);
-    width: 100%;
-    height: 80%;
-    position: absolute;
-    bottom: 0;
-    left: 0px;
-    z-index: 1;
+.fork-bottom-right,
+.fork-bottom-left,
+.fork-top-right,
+.fork-top-left {
+  z-index: 0;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(250 250 250);
+}
 
-    &:focus {outline: none;}
+.fork-top-right {
+  top: 0px;
+  right: 0px;
+  border-bottom-left-radius: 14px;
+}
+
+.fork-top-left {
+  top: 0px;
+  left: 0px;
+  border-bottom-right-radius: 14px;
+}
+
+.fork-bottom-right {
+  bottom: 0px;
+  right: 0px;
+  border-top-left-radius: 14px;
+}
+
+.fork-bottom-left {
+  bottom: 0px;
+  left: 0px;
+  border-top-right-radius: 14px;
+}
+
+// Home component Carousel style
+ngb-carousel {
+  img {
+    height: 50vw;
+    width: 93vw;
+    filter: brightness(0.9);
+    image-rendering: pixelated;
+    transition: filter 500ms ease-in-out;
   }
-
-  .arrow {
-    font-size: 35px;
-    position: absolute;
-    bottom: 30%;
-    left: calc(50% - 17.5px);
-    z-index: 2;
-
-    &:focus { outline: none; }
+  &:hover {
+    img {
+      filter: brightness(0.5);
+    }
   }
 }
 
-// Founded By section
-.founder-bg {
-  background-color: rgb(46, 46, 46);
-  color: white;
+// Media-breakpoints:
+// :::::::::::::::::
 
-  h1 {font-size: 3.5vw;}
+// Extra small devices
+@include media-breakpoint-down(xs) {
+  ngb-carousel {
+    img {
+      height: 50vw;
+      width: 93vw;
+    }
+  }
+}
 
-  img {
-    margin: 0 auto;
-    width: 20vw;
+// Small devices
+@include media-breakpoint-up(sm) {
+  .intro-text {
+    height: 35vw;
+  }
+}
+
+// Medium devices
+@include media-breakpoint-up(md) {
+  .intro-text {
+    height: 40vw;
   }
 
-  p {
-    font-family: 'Arimo', serif;
-    font-size: 2vw;
-    text-transform: uppercase;
-    padding: 1.5vw 0 0 0;
+  .title {
+    font-size: 5rem;
+  }
+
+  .fork-container {
+    width: 50%;
+  }
+
+  ngb-carousel {
+    img {
+      height: 30vw;
+      width: 60vw;
+    }
+  }
+}
+
+// Large devices
+@include media-breakpoint-up(lg) {
+  .intro-text {
+    height: 40vw;
+  }
+
+  .title {
+    font-size: 6rem;
+  }
+
+  .fork-container {
+    width: 100%;
+  }
+
+  ngb-carousel {
+    img {
+      height: 30vw;
+      width: 60vw;
+    }
   }
 }

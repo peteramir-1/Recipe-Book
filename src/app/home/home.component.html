@@ -1,86 +1,58 @@
 <div class="container">
-	<article class="row align-items-center">
+  <article class="row my-5">
     <!-- Intro -->
-    <section class="col">
-      <article class="row align-items-center text-center text-sm-left ml-0 ml-sm-5">
+    <section class="col-12 col-lg-7 align-items-center text-center text-lg-left order-2 order-lg-1">
+      <article class="row justify-content-center align-items-center intro-text">
+        <div class="col-12">
+          <!-- Title -->
+          <h1 class="py-3 d-lg-none display-3">Cook Chief</h1>
+          <h1 class="py-3 d-none d-lg-block display-2">Cook Chief</h1>
 
-        <!-- IMAGE if It's a small screen -->
-        <section class="col-12 d-block d-sm-none" >
-          <!-- Intro image -->
-          <img class="ml-5 intro-img-default" src="../../assets/unnamed.jpg" alt="" />
-        </section>
+          <div class="ml-lg-4">
+            <!-- Title Note -->
+            <p class="text-danger font-weight-bold text-monospace">All Recipes you want</p>
 
-        <!-- Title -->
-        <section class="col-12 mt-5">
-          <h1 class="title">Cook Chief</h1>
-        </section>
-
-        <!-- Title Note -->
-        <section class="col-12">
-          <p class="text-danger font-weight-bold text-monospace">All Recipes you want</p>
-        </section>
-
-        <!-- Sign in button -->
-        <section class="col-12">
-          <button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
-        </section>
-
+            <!-- Sign in button -->
+            <button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
+          </div>
+        </div>
       </article>
-		</section>
+    </section>
 
     <!-- IMAGE If it's a large screen-->
-		<section class="col d-none d-sm-block">
-			<!-- Intro image -->
-      <img class="intro-img-sm" src="../../assets/unnamed.jpg" alt="" />
+    <section class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
+      <div class="fork-container shadow mx-auto">
+        <!-- Intro image -->
+        <img class="img-fluid" src="https://iamafoodblog.b-cdn.net/wp-content/uploads/2020/05/homemade-birria-tacos-recipe-3273w.jpg" alt="recipe" />
+        <img class="position-absolute" *ngFor="let position of forkPosition" [ngClass]="position" [src]="forkLink" alt="fork" />
+      </div>
     </section>
-	</article>
+
+  </article>
 </div>
 
 <!-- Recipe Book -->
-<div class="container">
-	<article class="row">
+<div class="container pb-5">
+  <article class="row mb-5 justify-content-center">
 
     <!-- Recipe title -->
-		<header class="col-12 mt-5 mb-4">
-			<h1 class="text-center font-weight-bold">Recipes</h1>
-		</header>
+    <header class="col-12 mt-5 mb-4 text-center ">
+      <h1 class="display-4 font-weight-light">New Recipes</h1>
+    </header>
 
     <!-- Recipe Content -->
-    <section class="col-12 recipe-section">
-      <ngb-carousel *ngIf="recipes">
-        <ng-template ngbSlide *ngFor="let recipe of recipes">
-          <div class="picsum-img-wrapper">
-            <img [src]="recipe.imgPath" style="width: 100%;" alt="Random first slide">
+    <section class="col col-sm-8 col-7-md col-lg-8">
+      <ngb-carousel class="mx-auto" *ngIf="recipes">
+        <ng-template ngbSlide *ngFor="let recipe of recipes;let i = index">
+          <div class="picsum-img-wrapper cursor-pointer">
+            <img [src]="recipe.imgPath" [alt]="recipe.name" (click)="openRecipe(i)">
           </div>
           <div class="carousel-caption">
-            <h3>{{ recipe.name }}</h3>
-            <p>{{ recipe.description }}</p>
+            <h3 class="h5 text-shadow">{{ recipe.name | titlecase }}</h3>
+            <p class="text-shadow">{{ recipe.description | shorten }}</p>
           </div>
         </ng-template>
       </ngb-carousel>
     </section>
   </article>
 </div>
-
-<!-- Founders -->
-<!-- <div class="founder-bg">
-  <div class="container">
-    <article class="row text-center py-5">
-      <section class="col-12 mb-5">
-        <h1 class="font-weight-bold">Founded BY</h1>
-      </section>
-      <section class="col-4">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle shadow" alt="Ahmed Zaki">
-        <p>Ahmed Zaki</p>
-      </section>
-      <section class="col-4">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle shadow" alt="Yasmin Sabry">
-        <p>Yasmin Sabry</p>
-      </section>
-      <section class="col-4">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle shadow" alt="Mostafa Amr">
-        <p>Mostafa Amr</p>
-      </section>
-    </article>
-  </div>
-</div> -->

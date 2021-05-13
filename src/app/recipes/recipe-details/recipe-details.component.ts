@@ -1,9 +1,16 @@
-import { ingredient } from './../../models/shoppingList.model';
-import { ActivatedRoute, Data, ParamMap, Params, Router } from '@angular/router';
-import { recipeModel } from './../../models/recipe.model';
-import { RecipeService } from './../../services/recipe.service';
+// Angular imports
 import { Component, OnInit } from '@angular/core';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
+
+// Services
+import { RecipeService } from './../../services/recipe.service';
+
+// Models
+import { recipeModel } from './../../models/recipe.model';
+import { ingredient } from '../../models/ingredient.model';
+
+// Icons imports
+import { faArrowDown, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 	selector: 'app-recipe-details',
@@ -11,17 +18,19 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 	styleUrls: ['./recipe-details.component.scss'],
 })
 export class RecipeDetailsComponent implements OnInit {
-	recipeSelected: recipeModel;
+	// Properties
+  recipeSelected: recipeModel;
   recipeIndex: number;
 
-  // FontAwsome Icons
-  cartIcon = faShoppingCart;
+  // State
+  openDropdown = false;
 
-	constructor(
-      private recipeService: RecipeService,
-      private router: Router,
-      private route: ActivatedRoute
-    ) {}
+  // Icons
+  readonly arrow = faArrowDown;
+  readonly plusIcon = faPlus;
+  readonly cartIcon = faShoppingCart;
+
+	constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {}
 
 	ngOnInit(): void {
     this.route.data.subscribe((data: Data) => {
@@ -38,13 +47,19 @@ export class RecipeDetailsComponent implements OnInit {
 		this.recipeService.selectIng([ing]);
 	}
 
+  // Funtion to send Ingredients of the recipe to shoppinglist component
+  addAllIngredients() {
+    this.recipeService.selectIng(this.recipeSelected.ingredients);
+  }
+
+  // Function deletes the selected recipe
   deleteRecipe() {
     this.recipeService.deleteRecipe(this.recipeIndex);
     this.router.navigate(['recipes']);
   }
 
-  // Funtion to send Ingredients of the recipe to shoppinglist component
-	addAllIngredients() {
-		this.recipeService.selectIng(this.recipeSelected.ingredients);
-	}
+  // Open/Close Dropdown
+  closeDropdown() {
+    this.openDropdown = false;
+  }
 }

@@ -4,8 +4,11 @@
       <div class="spinner-border text-warning" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-      <button class="btn btn-primary float-right" [ngClass]="{'disabled': invalidInput('default')}" type="submit">
-        {{ submitBtn }}
+      <button class="btn btn-primary float-right" [disabled]="invalidInput('default')" type="submit">
+        Save
+      </button>
+      <button class="btn btn-primary float-right" (click)="onCancel()">
+        Cancel
       </button>
     </div>
   </div>

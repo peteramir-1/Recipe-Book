@@ -25,18 +25,13 @@
 						"aot": true,
 						"assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "node_modules/@taiga-ui/icons/src",
-                "output": "assets/taiga-ui/icons"
-              }
+              "src/assets"
             ],
 						"styles": [
-              "./node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "./node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"src/styles.scss"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"src/styles.scss",
+              "src/global-theme.scss"
 						],
 						"scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",

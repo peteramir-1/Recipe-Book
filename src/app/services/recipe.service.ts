@@ -1,6 +1,6 @@
 import { recipeModel } from './../models/recipe.model';
 import { ShoppingListService } from './shopping-list.service';
-import { ingredient } from '../models/shoppingList.model';
+import { ingredient } from '../models/ingredient.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({

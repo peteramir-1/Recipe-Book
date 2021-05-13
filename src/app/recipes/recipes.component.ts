@@ -1,6 +1,9 @@
+// Angular imports
 import { Component, OnInit } from '@angular/core';
-import { recipeModel } from './../models/recipe.model';
-import { ActivatedRoute, Data, ParamMap, Params } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap } from '@angular/router';
+
+// Models
+import { recipeModel } from '../models/recipe.model';
 
 @Component({
 	selector: 'app-recipes',
@@ -8,18 +11,23 @@ import { ActivatedRoute, Data, ParamMap, Params } from '@angular/router';
 	styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
+  // Properties
   recipes: recipeModel[];
+
+  // State
   sidebarState: boolean = false;
 
 	constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // recive component DATA
     this.route.data.subscribe((data: Data)=> {
       this.recipes = data['recipes'];
     });
 
-    this.route.queryParamMap.subscribe((params: Params)=> {
-      this.sidebarState = params.get('sidebarState');
+    // Change the state of the sidebar according to the route..
+    this.route.queryParamMap.subscribe((params: ParamMap)=> {
+      this.sidebarState = params.get('sidebarState') == 'true' ? true : false;
     });
   }
 }

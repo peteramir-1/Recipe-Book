@@ -1,0 +1,53 @@
+<!-- Navigation -->
+<mat-drawer-container class="sidenav-container" [hasBackdrop]="true">
+
+  <!-- Sidenav menu -->
+  <mat-drawer #drawer class="sidenav"
+      role="navigation"
+      mode="over"
+      [opened]="false">
+    <mat-toolbar>Main Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let link of navLinks" [routerLink]="link.url">
+        {{ link.name }}
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <!-- Navbar [ angular material toolbar ] -->
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <article class="col-12">
+        <article class="row justify-content-center">
+          <!-- Nav Left button -->
+          <section class="col-1">
+            <button class="mt-2 float-left" mat-icon-button (click)="drawer.toggle()">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </section>
+
+          <!-- Page Title -->
+          <section class="col">
+            <div
+              mat-button
+              class="h1 mb-0 text-center cursor-pointer"
+              routerLink="/home">
+              Cook Chief
+            </div>
+          </section>
+
+          <!-- Nav right button -->
+          <section class="col-1">
+            <button class="mt-2 float-right" mat-button isRoundButton="true" [matMenuTriggerFor]="manageMenu" >Manage</button>
+            <mat-menu #manageMenu="matMenu" xPosition="before">
+              <button mat-menu-item *ngFor="let item of manageBtn" (click)="onClick(item)">{{ item }}</button>
+            </mat-menu>
+          </section>
+        </article>
+      </article>
+    </mat-toolbar>
+
+    <!-- Application Content -->
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

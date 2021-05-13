@@ -1,15 +1,20 @@
+// Angular imports
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DropdownDirective } from './directives/dropdown.directive';
+// Directives
 import { GallaryDetailsDirective } from './directives/gallary-details.directive';
 
+// Routing
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
-import { AppComponent } from './app.component';
+// Components
+import { AppComponent }  from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
@@ -18,54 +23,68 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ErrorHandleComponent } from './error-handle/error-handle.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// icons
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import {
-  TuiButtonModule,
-  TuiDataListModule,
-  TuiLinkModule,
-  TuiRootModule,
-  TuiSvgModule
-} from '@taiga-ui/core';
-import { TuiHostedDropdownModule } from '@taiga-ui/core';
-import { TuiSidebarModule } from '@taiga-ui/addon-mobile';
-import { TuiActiveZoneModule } from '@taiga-ui/cdk';
-import { TuiAccordionModule } from '@taiga-ui/kit';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// NGX UI
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
+// Bootstrap UI
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Angular Material UI
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+
+// Taiga UI
+import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TuiScrollbarModule } from '@taiga-ui/core';
+
+// Pipes
+import { ShortenPipe } from './Pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    MainNavComponent,
+    HomeComponent,
     RecipesComponent,
     RecipeDetailsComponent,
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective,
     ErrorHandleComponent,
     RecipeEditComponent,
     GallaryDetailsDirective,
-    HomeComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule,
-    TuiRootModule,
-    TuiHostedDropdownModule,
-    TuiButtonModule,
-    TuiDataListModule,
-    TuiSidebarModule,
-    TuiActiveZoneModule,
-    TuiAccordionModule,
-    TuiLinkModule,
-    TuiSvgModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule,
+    LayoutModule,
+    NgScrollbarModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatSnackBarModule,
+    MatCardModule,
+    TuiRootModule,
+    TuiNotificationsModule,
+    TuiDialogModule,
+    TuiScrollbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

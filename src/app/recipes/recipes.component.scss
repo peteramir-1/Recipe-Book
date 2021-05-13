@@ -1,6 +1,6 @@
-@import "../../../node_modules/bootstrap/scss/functions";
-@import "../../../node_modules/bootstrap/scss/variables.scss";
-@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables.scss';
+@import '~bootstrap/scss/mixins/breakpoints';
 
 .recipe-item {
   border: none;
@@ -29,9 +29,11 @@
   right: 50%
 }
 
+// Media-breakpoints:
+// :::::::::::::::::
+// Medium devices
 @include media-breakpoint-down(md) {
-  .recipes-section {
-    background: #222;
-    height: auto;
+  .sidebar {
+    display: none;
   }
 }

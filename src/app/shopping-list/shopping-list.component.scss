@@ -1,6 +1,10 @@
-.row {
-  overflow-x: hidden;
-  padding: 0;
+// Bootstrap imports
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables.scss';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+card-column {
+  padding: 7rem auto;
 }
 
 .shopping-list-section {

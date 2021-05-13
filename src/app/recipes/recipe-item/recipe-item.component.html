@@ -1,13 +1,14 @@
-<!-- Recipe Image -->
-<img src="{{ recipe.imgPath }}" alt="{{ recipe.name }}" class="card-img-top" />
+<mat-card>
+  <!-- Recipe Image -->
+  <img mat-card-image [src]="recipe.imgPath" [alt]="recipe.name" />
 
-<!-- Recipe Body -->
-<div class="card-body">
+  <!-- Recipe Body -->
+  <mat-card-content>
 
-  <!-- Recipe Name -->
-  <section class="h6 card-title">{{ recipe.name }}</section>
+    <!-- Recipe Name -->
+    <h5 class="card-title">{{ recipe.name | titlecase }}</h5>
 
-  <!-- Recipe Description -->
-  <p class="card-text text-muted ">{{ recipe.description }}</p>
-
-</div>
+    <!-- Recipe Description -->
+    <p class="card-text text-muted ">{{ recipe.description | shorten }}</p>
+  </mat-card-content>
+</mat-card>

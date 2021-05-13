@@ -1,40 +1,50 @@
-import { recipeModel } from './../../models/recipe.model';
-import { RecipeService } from './../../services/recipe.service';
-import { ingredient } from './../../models/shoppingList.model';
-import { ActivatedRoute, Data, Router, Params } from '@angular/router';
+// Angular imports
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Data, Router, ParamMap } from '@angular/router';
+
+//Services
+import { RecipeService } from '../../services/recipe.service';
+
+// Models
+import { ingredient } from '../../models/ingredient.model';
+import { recipeModel } from '../../models/recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.scss']
+  styleUrls: ['./recipe-edit.component.scss'],
 })
 export class RecipeEditComponent implements OnInit {
-  recipeForm: FormGroup;
+  // Properties
   ingredients: ingredient[] = [];
-  editMode: boolean;
   recipeIndex: number;
-  submitBtn: String;
 
-  constructor(
-      private router: Router,
-      private route: ActivatedRoute,
-      private recipeService:RecipeService
-    ) { }
+  // State
+  editMode: boolean;
+
+  // Form
+  recipeForm: FormGroup;
+
+  constructor(private router: Router, private route: ActivatedRoute, private recipeService:RecipeService) { }
 
   ngOnInit(): void {
+    // Create recipe FORM
     this.recipeForm  = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'description': new FormControl(null, Validators.required),
+      'name': new FormControl(null, [Validators.required, this.recipeNameValidator]),
+      'description': new FormControl(null, [Validators.required, this.recipeNameValidator]),
       'preparation': new FormControl(null, Validators.required),
       'imageUrl': new FormControl(null, Validators.required),
       'ingredients': new FormGroup({
         'ingName': new FormControl(null),
-        'ingNum': new FormControl(null)
+        'ingNum': new FormControl(null,  [
+          Validators.pattern(/^[0-9]+[0-9]*$/),
+        ])
       })
     });
 
+		// Binds Values of the recipe selected to the recipe form
+		// And checks whether it's on editMode or not
     this.route.data.subscribe((data: Data) => {
       if (data['recipe'] != null) {
         this.recipeForm.reset({
@@ -44,18 +54,31 @@ export class RecipeEditComponent implements OnInit {
           imageUrl: data['recipe']['imgPath'],
         });
         this.ingredients = data['recipe']['ingredients'];
-        this.route.paramMap.subscribe((param: Params) => {
-          this.recipeIndex = +param.get('id')
+        this.route.paramMap.subscribe((param: ParamMap) => {
+          this.recipeIndex = (+param.get('id')) -1;
         })
-        this.submitBtn = 'Edit Recipe'
         this.editMode = true;
       } else {
-        this.submitBtn = 'Add New Recipe'
         this.editMode = false;
       }
     });
   }
 
+	// Recipe Validator doesn't allow a word with character number more than 15 Ch.
+	// It has been made to fix a bug in the UI..
+  recipeNameValidator(control: FormControl): {[s: string]: boolean} {
+    let recipeName = control.value;
+    if (recipeName!=null) {
+      let patternCheck = recipeName.split(' ').map((namePiece: string) => {
+        return /\b[0-z]{15,}\b/g.test(namePiece);
+      }).includes(true);
+      if (patternCheck) return {'recipeNameInvalid': true};
+    }
+    return null;
+  }
+
+	// Function Checks whether an input is valid or not
+	// it returns either true nor false..
   invalidInput(inputControl, validationError: string = 'invalid') {
     switch (validationError) {
       case 'invalid':
@@ -80,6 +103,7 @@ export class RecipeEditComponent implements OnInit {
     }
   }
 
+	// Add an ingredient to a recipe
   onAddIngredient() {
     let ingredients = this.recipeForm.get('ingredients')
     let ingName = ingredients.get('ingName');
@@ -87,32 +111,58 @@ export class RecipeEditComponent implements OnInit {
     this.ingredients.push(new ingredient(ingName.value, ingNum.value));
   }
 
+	// Remove an ingredient from a recipe
   deleteIng(index: number) {
     this.ingredients.splice(index, 1)
     console.log(this.ingredients)
   }
 
+	// Submit the form
   onSubmit() {
-    if (this.editMode) {
-      const NewRecipe = new recipeModel(
-        this.recipeForm.value.name,
-        this.recipeForm.value.description,
-        this.recipeForm.value.preparation,
-        this.recipeForm.value.imageUrl,
-        this.ingredients
-      );
-      this.recipeService.editRecipe(NewRecipe, this.recipeIndex - 1)
-      this.router.navigate(['recipes'])
+		// check validation of the user to allow submittion
+    if (this.recipeForm.valid) {
+			// check whether the page is on the EditMode or not
+      if (this.editMode) {
+				// Define the New Edition of the recipe
+        const NewEditionRecipe = new recipeModel(
+          this.recipeForm.value.name,
+          this.recipeForm.value.description,
+          this.recipeForm.value.preparation,
+          this.recipeForm.value.imageUrl,
+          this.ingredients
+        );
+				// edit the Recipe selected
+        this.recipeService.editRecipe(NewEditionRecipe, this.recipeIndex);
+				// Navigate 1 path back
+        this.router.navigate(['../'], {relativeTo: this.route});
+      } else {
+				// Define the New Recipe
+        const NewRecipe = new recipeModel(
+          this.recipeForm.value.name,
+          this.recipeForm.value.description,
+          this.recipeForm.value.preparation,
+          this.recipeForm.value.imageUrl,
+          this.ingredients
+        )
+				// Add it to the Recipes database
+        this.recipeService.addRecipe(NewRecipe);
+				// navigate to recipes
+        this.router.navigate(['recipes']);
+      }
     } else {
-      const NewRecipe = new recipeModel(
-        this.recipeForm.value.name,
-        this.recipeForm.value.description,
-        this.recipeForm.value.preparation,
-        this.recipeForm.value.imageUrl,
-        this.ingredients
-      )
-      this.recipeService.addRecipe(NewRecipe);
-      this.router.navigate(['recipes'])
+			// Tell the user what's wrong..
+      this.recipeForm.get('name').markAsTouched();
+      this.recipeForm.get('description').markAsTouched();
+      this.recipeForm.get('preparation').markAsTouched();
+      this.recipeForm.get('imageUrl').markAsTouched();
+    }
+  }
+
+  onCancel() {
+    if (this.editMode) {
+      this.router.navigate(['../'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+    } else {
+      this.router.navigate(['/recipes'], {relativeTo: this.route});
     }
   }
 }

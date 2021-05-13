@@ -3,7 +3,6 @@
 
     <!-- Recipe Book list -->
     <section class="back col-12 col-md pt-5">
-      <div class="recipe-section" [ngClass]="{sidebar: sidebarState}"></div>
       <div class="back card-columns">
 
         <!-- Each Recipe -->
@@ -13,7 +12,7 @@
           [recipe]="recipe"
           [routerLink]="[i + 1]"
           [queryParams]="{sidebarState: true}"
-          routerLinkActive="recipe-opened"
+          routerLinkActive="recipe-opened shadow-lg"
           ></app-recipe-item>
 
       </div>

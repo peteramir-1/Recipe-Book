@@ -11,7 +11,7 @@ import { ErrorHandleComponent } from './../error-handle/error-handle.component';
 import { recipeDataResolver } from './recipe-data-resolver.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, resolve: {recipes: recipeDataResolver} },
+  { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 	{
 		path: 'recipes',

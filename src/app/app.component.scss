@@ -1,6 +1,31 @@
-@import "../../node_modules/@primer/css/index.scss";
-@import '../../node_modules/@taiga-ui/core/styles/taiga-ui-local.scss';
+
+// Main Styles
+html,
+body {
+  height: 100%
+}
 
 body {
-  overflow-x: hidden;
+  margin: 0;
+  overflow: hidden;
+}
+
+.row {
+  overflow: hidden;
+  padding: 0;
+}
+
+.cursor-pointer {cursor: pointer;}
+
+*::-webkit-scrollbar {
+  width: 1em;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #82828259;
+  background-clip: content-box;
+  border: 5px solid transparent;
+  border-radius: 30px;
+}
+
 }

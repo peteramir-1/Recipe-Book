@@ -1,7 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+// Angular imports
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 
-import { ingredient } from '../models/shoppingList.model';
+// Services
 import { ShoppingListService } from './../services/shopping-list.service';
+
+// Models
+import { ingredient } from '../models/ingredient.model';
 
 @Component({
 	selector: 'app-shopping-list',
@@ -9,14 +14,16 @@ import { ShoppingListService } from './../services/shopping-list.service';
 	styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
-	ingredients: ingredient[];
+	// Properties
+  ingredients: ingredient[];
 
-	constructor(private shoppingListService: ShoppingListService) {}
+	constructor(private route: ActivatedRoute, private shoppingListService: ShoppingListService) {}
 
 	ngOnInit(): void {
     this.ingredients = this.shoppingListService.ingredients;
   }
 
+  // Delete ingredient from the Shopping List
   deleteIng(i: number) {
     this.ingredients.splice(i, 1)
   }

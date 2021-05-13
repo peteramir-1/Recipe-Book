@@ -1,27 +1,38 @@
-<div class="bg"></div>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<div class="row justify-content-around">
-				<div class="col-12 col-lg-5">
-          <div class="shopping-list-section"></div>
-					<app-shopping-edit></app-shopping-edit>
-				</div>
-				<div class="col-12 col-lg-5 my-5" >
-					<ul
-						class="list-group list-group-flush"
-						*ngFor="let ingredient of ingredients; let i = index"
-					>
-						<li class="list-group-item my-1 shadow-sm">
-							{{ ingredient.name }}
-							<span class="badge badge-info">{{ ingredient.amount }}</span>
-              <button type="button" class="ml-2 mb-1 close text-danger" aria-label="delete" (click)="deleteIng(i)">
-                <span aria-hidden="true">&times;</span>
-              </button>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+  <article class="row justify-content-around">
+
+    <!-- ShoppingList Edit Component -->
+    <section class="col-12 col-lg-5">
+      <app-shopping-edit></app-shopping-edit>
+    </section>
+
+    <!-- Shopping List -->
+    <section class="col-12 col-lg-5 my-5" >
+
+      <!-- List Group of the ingredients -->
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let ingredient of ingredients; let i = index"
+      >
+
+        <li class="list-group-item shadow-sm my-1">
+          {{ ingredient.name }}
+
+          <!-- Ingredient Amount on a badge -->
+          <span class="badge badge-info">{{ ingredient.amount }}</span>
+
+          <!-- Remove icon/Button -->
+          <button
+            type="button"
+            class="text-danger close ml-2 mb-1"
+            aria-label="delete"
+            (click)="deleteIng(i)"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </li>
+
+      </ul>
+    </section>
+  </article>
 </div>

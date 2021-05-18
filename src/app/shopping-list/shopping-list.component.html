@@ -1,37 +1,25 @@
-<div class="container-fluid">
-  <article class="row justify-content-around">
+<!-- Page container  -->
+<div class="container">
+  <article class="row">
 
     <!-- ShoppingList Edit Component -->
-    <section class="col-12 col-lg-5">
+    <section class="col-6">
       <app-shopping-edit></app-shopping-edit>
     </section>
 
     <!-- Shopping List -->
-    <section class="col-12 col-lg-5 my-5" >
-
+    <section class="col-6" >
       <!-- List Group of the ingredients -->
-      <ul
-        class="list-group list-group-flush"
-        *ngFor="let ingredient of ingredients; let i = index"
-      >
-
-        <li class="list-group-item shadow-sm my-1">
-          {{ ingredient.name }}
-
-          <!-- Ingredient Amount on a badge -->
-          <span class="badge badge-info">{{ ingredient.amount }}</span>
-
+      <ul class="list-group">
+        <li *ngFor="let ingredient of ingredients; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            {{ ingredient.name }}
+            <!-- Ingredient Amount on a badge -->
+            <span class="badge ms-2 bg-primary rounded-pill">{{ ingredient.amount }}</span>
+          </div>
           <!-- Remove icon/Button -->
-          <button
-            type="button"
-            class="text-danger close ml-2 mb-1"
-            aria-label="delete"
-            (click)="deleteIng(i)"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <fa-icon class="close-icon" [icon]="faClose" (click)="deleteIng(i)"></fa-icon>
         </li>
-
       </ul>
     </section>
   </article>

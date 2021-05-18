@@ -1,3 +1,50 @@
-label {
-  box-shadow: 0 0rem 1rem rgba(0,0,0,.3)!important;
+// Bootstrap imports
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables.scss';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+
+.form-control:first-child {
+  border: none;
 }
+
+.form-group {
+  margin: 1.5rem 0;
+}
+
+input {
+  margin-top: 7px;
+}
+
+input.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+input.ng-touched.ng-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 25%);
+}
+
+
+// Media-breakpoints:
+// :::::::::::::::::
+
+// Large devices
+@include media-breakpoint-down(lg) {
+
+}
+
+// Medium devices
+@include media-breakpoint-down(md) {
+
+}
+
+// Small devices
+@include media-breakpoint-down(sm) {
+
+}
+
+// Extra small devices
+@include media-breakpoint-down(xs) {
+
+}
+

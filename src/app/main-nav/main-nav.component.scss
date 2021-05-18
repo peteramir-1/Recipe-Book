@@ -1,23 +1,100 @@
-// Sidenav menu style
-.sidenav-container {
-  height: 100%;
-}
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-.sidenav {
-  width: 200px;
+.mat-drawer-container {
+  background-color: white;
 }
-
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-// navigation bar style
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 .mat-drawer-content {
-  overflow: overlay
+  bottom: -25px;
+  .mat-toolbar {
+    background: transparent;
+    height: 100px;
+    margin-bottom: 5rem;
+
+    .logo {
+      flex: auto;
+      text-align: center;
+      img {
+        width: 40px;
+        height: 40px;
+        filter: drop-shadow(0px 0px 7px #00000050);
+      }
+    }
+
+    .profile-pic {
+      flex: auto;
+      text-align: center;
+      box-shadow: 0px 1px 8px 0px #0000006b;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .nav {
+      text-align: center;
+      width: fit-content;
+      color: black;
+      background-color: white;
+      border-radius: 50px;
+      margin: 0px auto;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0px 1px 8px 0px #0000006b;
+
+      :hover {
+        box-shadow: 0 0 3px 0px black;
+      }
+
+      span {
+        font-size: 15px;
+        padding: 2px 22px;
+        text-align: center;
+        text-shadow: 0px 0px 5px #00000036;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+      :first-child {
+        padding-left: 35px;
+      }
+
+      :last-child {
+        padding-right: 35px;
+      }
+
+      .nav-active {
+        background-color: #8c8c8c !important;
+        color: white !important;
+        &:hover {
+          box-shadow: none
+        }
+      }
+    }
+  }
+}
+
+// background
+.main-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  height: 46rem;
+  width: 100vw;
+  margin-bottom: 5rem;
+  background: url(../../assets/home/main-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(#0000005e, transparent);
+    height: 100%;
+    width: 100%;
+  }
 }

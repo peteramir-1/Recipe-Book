@@ -1,14 +1,14 @@
-<mat-card>
+<div class="card">
   <!-- Recipe Image -->
-  <img mat-card-image [src]="recipe.imgPath" [alt]="recipe.name" />
+  <img class="card-img-top" [src]="recipe.imgPath" [alt]="recipe.name" />
 
   <!-- Recipe Body -->
-  <mat-card-content>
+  <section class="card-body">
 
     <!-- Recipe Name -->
     <h5 class="card-title">{{ recipe.name | titlecase }}</h5>
 
     <!-- Recipe Description -->
     <p class="card-text text-muted ">{{ recipe.description | shorten }}</p>
-  </mat-card-content>
-</mat-card>
+  </section>
+</div>

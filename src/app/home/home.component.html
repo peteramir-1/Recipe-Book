@@ -1,58 +1,57 @@
-<div class="container">
-  <article class="row my-5">
-    <!-- Intro -->
-    <section class="col-12 col-lg-7 align-items-center text-center text-lg-left order-2 order-lg-1">
-      <article class="row justify-content-center align-items-center intro-text">
-        <div class="col-12">
-          <!-- Title -->
-          <h1 class="py-3 d-lg-none display-3">Cook Chief</h1>
-          <h1 class="py-3 d-none d-lg-block display-2">Cook Chief</h1>
-
-          <div class="ml-lg-4">
-            <!-- Title Note -->
-            <p class="text-danger font-weight-bold text-monospace">All Recipes you want</p>
-
-            <!-- Sign in button -->
-            <button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
-          </div>
+<div class="white">
+  <div class="container section">
+    <article class="row align-items-center">
+      <!-- IMAGE If it's a large screen-->
+      <section class="col-6">
+        <div class="signin-promo shadow mx-auto">
+          <!-- Intro image -->
+          <img class="img-fluid" src="https://iamafoodblog.b-cdn.net/wp-content/uploads/2020/05/homemade-birria-tacos-recipe-3273w.jpg" alt="recipe" />
         </div>
-      </article>
-    </section>
+      </section>
 
-    <!-- IMAGE If it's a large screen-->
-    <section class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
-      <div class="fork-container shadow mx-auto">
-        <!-- Intro image -->
-        <img class="img-fluid" src="https://iamafoodblog.b-cdn.net/wp-content/uploads/2020/05/homemade-birria-tacos-recipe-3273w.jpg" alt="recipe" />
-        <img class="position-absolute" *ngFor="let position of forkPosition" [ngClass]="position" [src]="forkLink" alt="fork" />
-      </div>
-    </section>
+      <!-- Signin Promo -->
+      <section class="col-4 offset-1 signin-promo">
+        <!-- Title -->
+        <h1 class="display-2">Cook Chief</h1>
 
-  </article>
+        <!-- Title Note -->
+        <p class="text-danger font-weight-bold text-monospace">All Recipes you want</p>
+
+        <!-- Sign in button -->
+        <button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
+      </section>
+    </article>
+  </div>
 </div>
 
-<!-- Recipe Book -->
-<div class="container pb-5">
-  <article class="row mb-5 justify-content-center">
-
-    <!-- Recipe title -->
-    <header class="col-12 mt-5 mb-4 text-center ">
-      <h1 class="display-4 font-weight-light">New Recipes</h1>
-    </header>
-
-    <!-- Recipe Content -->
-    <section class="col col-sm-8 col-7-md col-lg-8">
-      <ngb-carousel class="mx-auto" *ngIf="recipes">
-        <ng-template ngbSlide *ngFor="let recipe of recipes;let i = index">
-          <div class="picsum-img-wrapper cursor-pointer">
-            <img [src]="recipe.imgPath" [alt]="recipe.name" (click)="openRecipe(i)">
+<!-- New recipes section -->
+<div class="trans">
+  <div class="container section">
+    <article class="row justify-content-center">
+      <!-- Recipe title -->
+      <header class="col-12 text-center">
+        <h1 class="display-4 font-weight-light">New Recipes</h1>
+      </header>
+      <!-- new recipes carousel -->
+      <section class="col-8 mt-5 mx-auto">
+        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+          <!-- carousel body -->
+          <div class="carousel-inner">
+            <div *ngFor="let recipe of recipes; let first = first" class="carousel-item" [ngClass]="first?'active':null">
+              <img [src]="recipe.imgPath" class="d-block w-100" [alt]="recipe.name">
+            </div>
           </div>
-          <div class="carousel-caption">
-            <h3 class="h5 text-shadow">{{ recipe.name | titlecase }}</h3>
-            <p class="text-shadow">{{ recipe.description | shorten }}</p>
-          </div>
-        </ng-template>
-      </ngb-carousel>
-    </section>
-  </article>
+          <!-- controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </article>
+  </div>
 </div>

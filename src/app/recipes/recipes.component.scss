@@ -31,9 +31,25 @@
 
 // Media-breakpoints:
 // :::::::::::::::::
+
+// Large devices
+@include media-breakpoint-down(lg) {
+
+}
+
 // Medium devices
 @include media-breakpoint-down(md) {
   .sidebar {
     display: none;
   }
+}
+
+// Small devices
+@include media-breakpoint-down(sm) {
+
+}
+
+// Extra small devices
+@include media-breakpoint-down(xs) {
+
 }

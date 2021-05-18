@@ -12,7 +12,7 @@ import { GallaryDetailsDirective } from './directives/gallary-details.directive'
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 // Components
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -26,12 +26,6 @@ import { ErrorHandleComponent } from './error-handle/error-handle.component';
 // icons
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// NGX UI
-import { NgScrollbarModule } from 'ngx-scrollbar';
-
-// Bootstrap UI
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 // Angular Material UI
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,11 +36,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 
-// Taiga UI
-import { TuiDialogModule, TuiNotificationsModule, TuiRootModule, TuiScrollbarModule } from '@taiga-ui/core';
-
 // Pipes
 import { ShortenPipe } from './Pipes/shorten.pipe';
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +56,11 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
     ErrorHandleComponent,
     RecipeEditComponent,
     GallaryDetailsDirective,
-    ShortenPipe
+    ShortenPipe,
+    FooterComponent,
+    AboutComponent,
+    UpgradeComponent,
+    FeaturesComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,10 +68,8 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgbModule,
     FontAwesomeModule,
     LayoutModule,
-    NgScrollbarModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -81,10 +78,6 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
     MatMenuModule,
     MatSnackBarModule,
     MatCardModule,
-    TuiRootModule,
-    TuiNotificationsModule,
-    TuiDialogModule,
-    TuiScrollbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

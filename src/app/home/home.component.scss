@@ -6,135 +6,50 @@
 @import "../../../node_modules/bootstrap/scss/variables.scss";
 @import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 
-// Intro style
-.intro-text,
-.intro-image {
-  height: 60vw;
+// global home style
+.section {
+  margin-top: 5rem;
+  padding: 5rem 0;
 }
 
-// Intro section
-.title {
-  font-size: 3rem;
+.white {
+  background-color: white;
+  color: black;
 }
 
-// Intro image corners style
-.fork-container {
-  border-radius: 20px;
+.trans {
+  color: white!important;
+}
+
+// Signin Promo
+.signin-promo {
+  border-radius: 0.75rem;
   overflow: hidden;
-  position: relative;
-  width: 70%;
-}
-
-.fork-bottom-right,
-.fork-bottom-left,
-.fork-top-right,
-.fork-top-left {
-  z-index: 0;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(250 250 250);
-}
-
-.fork-top-right {
-  top: 0px;
-  right: 0px;
-  border-bottom-left-radius: 14px;
-}
-
-.fork-top-left {
-  top: 0px;
-  left: 0px;
-  border-bottom-right-radius: 14px;
-}
-
-.fork-bottom-right {
-  bottom: 0px;
-  right: 0px;
-  border-top-left-radius: 14px;
-}
-
-.fork-bottom-left {
-  bottom: 0px;
-  left: 0px;
-  border-top-right-radius: 14px;
-}
-
-// Home component Carousel style
-ngb-carousel {
-  img {
-    height: 50vw;
-    width: 93vw;
-    filter: brightness(0.9);
-    image-rendering: pixelated;
-    transition: filter 500ms ease-in-out;
-  }
-  &:hover {
-    img {
-      filter: brightness(0.5);
-    }
+  :is(p, button) {
+    margin-left: 15px;
   }
 }
+
 
 // Media-breakpoints:
 // :::::::::::::::::
 
 // Extra small devices
 @include media-breakpoint-down(xs) {
-  ngb-carousel {
-    img {
-      height: 50vw;
-      width: 93vw;
-    }
-  }
+
 }
 
 // Small devices
 @include media-breakpoint-up(sm) {
-  .intro-text {
-    height: 35vw;
-  }
+
 }
 
 // Medium devices
 @include media-breakpoint-up(md) {
-  .intro-text {
-    height: 40vw;
-  }
 
-  .title {
-    font-size: 5rem;
-  }
-
-  .fork-container {
-    width: 50%;
-  }
-
-  ngb-carousel {
-    img {
-      height: 30vw;
-      width: 60vw;
-    }
-  }
 }
 
 // Large devices
 @include media-breakpoint-up(lg) {
-  .intro-text {
-    height: 40vw;
-  }
 
-  .title {
-    font-size: 6rem;
-  }
-
-  .fork-container {
-    width: 100%;
-  }
-
-  ngb-carousel {
-    img {
-      height: 30vw;
-      width: 60vw;
-    }
-  }
 }

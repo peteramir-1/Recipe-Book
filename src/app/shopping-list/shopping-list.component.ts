@@ -8,6 +8,9 @@ import { ShoppingListService } from './../services/shopping-list.service';
 // Models
 import { ingredient } from '../models/ingredient.model';
 
+// ICONS
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
 	selector: 'app-shopping-list',
 	templateUrl: './shopping-list.component.html',
@@ -17,14 +20,23 @@ export class ShoppingListComponent implements OnInit {
 	// Properties
   ingredients: ingredient[];
 
-	constructor(private route: ActivatedRoute, private shoppingListService: ShoppingListService) {}
+  // Icons
+  readonly faClose = faTimes ;
+
+	constructor(
+      private route: ActivatedRoute,
+      private shoppingListService: ShoppingListService,
+    ) {}
 
 	ngOnInit(): void {
-    this.ingredients = this.shoppingListService.ingredients;
+
+    this.route.data.subscribe((data: Data) => {
+      this.ingredients = data.ingredients;
+    });
   }
 
   // Delete ingredient from the Shopping List
-  deleteIng(i: number) {
-    this.ingredients.splice(i, 1)
+  deleteIng(i: number): void {
+    this.ingredients.splice(i, 1);
   }
 }

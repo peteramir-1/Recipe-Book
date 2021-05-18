@@ -1,0 +1,62 @@
+.footer-bg {
+  background-color: #2f2f2f;
+  margin-top: 10rem;
+  :is(a, h1, h2, h3, h4, h5, h6, p, label) {
+    color: white;
+  };
+  input {
+    color: black
+  }
+  .row {
+    padding: 5rem 0;
+
+    .form-group {
+      > .form-control {
+        background: none;
+        border: none;
+        color:inherit
+      }
+      .form-control input {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    h2{
+      position: relative;
+      margin-bottom: 1.5rem;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -14px;
+        left: 0;
+        width: 9rem;
+        height: 0.3rem;
+        z-index: 2;
+        background-color: white;
+      }
+    }
+
+    .nav-links {
+      padding-left: 6px;
+      margin-top: 2.5rem;
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 5px;
+        transition: all 0.5s ease-in-out;
+        &:hover {
+          text-shadow: -2px 2px 5px black;
+          color: crimson;
+        }
+      }
+    }
+    .logo {
+      img {
+        width: 80px;
+        height: 80px;
+        filter: drop-shadow(0px 0px 7px #00000050);
+      }
+    }
+  }
+}
+

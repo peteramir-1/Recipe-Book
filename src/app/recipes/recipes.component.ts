@@ -15,19 +15,21 @@ export class RecipesComponent implements OnInit {
   recipes: recipeModel[];
 
   // State
-  sidebarState: boolean = false;
+  sidebarState = false;
 
-	constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     // recive component DATA
-    this.route.data.subscribe((data: Data)=> {
-      this.recipes = data['recipes'];
+    this.route.data.subscribe((data: Data) => {
+      this.recipes = data.recipes;
     });
 
     // Change the state of the sidebar according to the route..
     this.route.queryParamMap.subscribe((params: ParamMap)=> {
-      this.sidebarState = params.get('sidebarState') == 'true' ? true : false;
+      this.sidebarState = params.get('sidebarState') === 'true' ? true : false;
     });
   }
 }

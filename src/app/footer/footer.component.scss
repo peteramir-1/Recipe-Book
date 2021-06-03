@@ -1,11 +1,10 @@
 .footer-bg {
   background-color: #2f2f2f;
-  margin-top: 10rem;
   :is(a, h1, h2, h3, h4, h5, h6, p, label) {
     color: white;
-  };
+  }
   input {
-    color: black
+    color: black;
   }
   .row {
     padding: 5rem 0;
@@ -14,18 +13,18 @@
       > .form-control {
         background: none;
         border: none;
-        color:inherit
+        color: inherit;
       }
       .form-control input {
         margin-bottom: 1.5rem;
       }
     }
 
-    h2{
+    h2 {
       position: relative;
       margin-bottom: 1.5rem;
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -14px;
         left: 0;
@@ -59,4 +58,3 @@
     }
   }
 }
-

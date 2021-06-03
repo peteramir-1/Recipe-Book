@@ -1,57 +1,81 @@
 <div class="white">
-  <div class="container section">
-    <article class="row align-items-center">
-      <!-- IMAGE If it's a large screen-->
-      <section class="col-6">
-        <div class="signin-promo shadow mx-auto">
-          <!-- Intro image -->
-          <img class="img-fluid" src="https://iamafoodblog.b-cdn.net/wp-content/uploads/2020/05/homemade-birria-tacos-recipe-3273w.jpg" alt="recipe" />
-        </div>
-      </section>
+	<div class="container section">
+		<article class="row align-items-center">
+			<!-- IMAGE If it's a large screen-->
+			<section class="col-6">
+				<div class="signin-promo shadow mx-auto">
+					<!-- Intro image -->
+					<img
+						class="img-fluid"
+						src="../../assets/home/sign-in.jpg"
+						alt="recipe"
+					/>
+				</div>
+			</section>
 
-      <!-- Signin Promo -->
-      <section class="col-4 offset-1 signin-promo">
-        <!-- Title -->
-        <h1 class="display-2">Cook Chief</h1>
+			<!-- Signin Promo -->
+			<section class="col-4 offset-1 signin-promo">
+				<!-- Title -->
+				<h1 class="display-2">Cook Chief</h1>
 
-        <!-- Title Note -->
-        <p class="text-danger font-weight-bold text-monospace">All Recipes you want</p>
+				<!-- Title Note -->
+				<p class="text-danger font-weight-bold text-monospace">
+					All Recipes you want
+				</p>
 
-        <!-- Sign in button -->
-        <button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
-      </section>
-    </article>
-  </div>
+				<!-- Sign in button -->
+				<button class="btn btn-white border-dark text-dark">SIGN IN NOW</button>
+			</section>
+		</article>
+	</div>
 </div>
 
 <!-- New recipes section -->
 <div class="trans">
-  <div class="container section">
-    <article class="row justify-content-center">
-      <!-- Recipe title -->
-      <header class="col-12 text-center">
-        <h1 class="display-4 font-weight-light">New Recipes</h1>
-      </header>
-      <!-- new recipes carousel -->
-      <section class="col-8 mt-5 mx-auto">
-        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-          <!-- carousel body -->
-          <div class="carousel-inner">
-            <div *ngFor="let recipe of recipes; let first = first" class="carousel-item" [ngClass]="first?'active':null">
-              <img [src]="recipe.imgPath" class="d-block w-100" [alt]="recipe.name">
-            </div>
-          </div>
-          <!-- controls -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
-    </article>
-  </div>
+	<div class="container section">
+		<article class="row justify-content-center">
+			<!-- Recipe title -->
+			<header class="col-12 text-center">
+				<h1 class="display-4 font-weight-light">New Recipes</h1>
+			</header>
+			<!-- new recipes carousel -->
+			<section class="col-8 mt-5 mx-auto">
+				<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+					<!-- carousel body -->
+					<div class="carousel-inner">
+						<div
+							*ngFor="let recipe of recipes; let first = first"
+							class="carousel-item"
+							[ngClass]="first?'active':null"
+						>
+							<img
+								[src]="recipe.imgPath"
+								class="d-block w-100"
+								[alt]="recipe.name"
+							/>
+						</div>
+					</div>
+					<!-- controls -->
+					<button 
+						class="carousel-control-prev"
+						type="button"
+						data-bs-target="#recipeCarousel"
+						data-bs-slide="prev"
+					>
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button 
+						class="carousel-control-next"
+						type="button"
+						data-bs-target="#recipeCarousel"
+						data-bs-slide="next"
+					>
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</section>
+		</article>
+	</div>
 </div>

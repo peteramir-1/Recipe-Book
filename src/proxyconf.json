@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "recipe-book-da862.firebaseapp.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

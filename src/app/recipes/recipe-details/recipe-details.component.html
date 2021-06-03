@@ -1,92 +1,95 @@
 <!-- Container ==> title + dropdown -->
-<header class="container-fluid">
-  <article class="row pb-5">
+<div class="container py-5">
+	<header class="row py-2">
+		<!-- Title -->
+		<section class="col col-xl-7 mb-3 mb-xl-0">
+			<h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
+		</section>
 
-    <!-- Title -->
-    <section class="col col-xl-7 mb-3 mb-xl-0">
-      <h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
-    </section>
+		<!-- Dropdown -->
+		<section class="col-12 col-xl-2 align-self-center">
+			<div class="dropdown">
+				<button
+					class="btn btn-dark dropdown-toggle"
+					type="button"
+					id="manage_recipe_dropdown"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+					appDropdown="left"
+				>
+					Manage Recipe
+				</button>
+				<div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
+					<a
+						class="dropdown-item"
+						routerLink="edit"
+						queryParamsHandling="preserve"
+					>
+						Edit Recipe
+					</a>
+					<a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
+				</div>
+			</div>
+		</section>
 
-    <!-- Dropdown -->
-    <section class="col-12 col-xl-2 align-self-center">
-      <div class="dropdown">
-        <button class="btn btn-dark dropdown-toggle" type="button"
-          id="manage_recipe_dropdown"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          appDropdown="left"
-        >
-          Manage Recipe
-        </button>
-        <div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
-          <a class="dropdown-item" routerLink="edit" queryParamsHandling="preserve">
-            Edit Recipe
-          </a>
-          <a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
-        </div>
-      </div>
-    </section>
+		<!-- Description -->
+		<section class="col-12 mt-3">
+			<p class="text-muted">{{ recipeSelected.description }}</p>
+		</section>
+	</header>
 
-    <!-- Description -->
-    <section class="col-12 mt-3">
-      <p class="text-muted">{{ recipeSelected.description }}</p>
-    </section>
-  </article>
-</header>
+	<!-- Details Content -->
+	<!-- Image -->
+	<article class="row justify-content-center">
+		<section class="col-12">
+			<img
+				class="img-thumbnail shadow-sm"
+				[src]="recipeSelected.imgPath"
+				[alt]="recipeSelected.name"
+			/>
+		</section>
+	</article>
 
-<!-- Details Content -->
-<div class="container">
+	<!-- How to Prepare Section -->
+	<article class="row py-5">
+		<section class="col-12">
+			<h2 class="text-dark font-weight-light mb-2">How to prepare:</h2>
+			<p class="text-muted">{{ recipeSelected.preparation }}</p>
+		</section>
+	</article>
 
-  <!-- Image -->
-  <article class="row justify-content-center">
-    <section class="col-12">
-      <img
-        class="img-thumbnail shadow-sm"
-        [src]="recipeSelected.imgPath"
-        [alt]="recipeSelected.name"
-      />
-    </section>
-  </article>
+	<!-- Ingredients -->
+	<footer class="row my-2 mb-4">
+		<section class="col-12">
+			<div class="list-group">
+				<div
+					class="list-group-item list-group-item-action active"
+					aria-current="true"
+				>
+					<!-- Ingredient Section Title -->
+					<h4 class="d-inline">Ingredients</h4>
 
-  <!-- How to Prepare Section -->
-  <article class="row py-5">
-    <section class="col-12">
-      <h2 class="text-dark font-weight-light mb-2">How to prepare:</h2>
-      <p class="text-muted">{{ recipeSelected.preparation }}</p>
-    </section>
-  </article>
+					<!-- Ingredient buy all Button -->
+					<button
+						class="btn btn-dark float-right"
+						(click)="addAllIngredients();"
+					>
+						All To Shopping Cart
+					</button>
+				</div>
+
+				<!-- Every single ingredient -->
+				<button
+					type="button"
+					class="list-group-item list-group-item-action"
+					*ngFor="let ing of recipeSelected.ingredients; let i = index;"
+					(click)="addIngredient(ing)"
+				>
+					{{ (i + 1) + '. ' + ing.name }}
+					<span class="badge badge-info">{{ ing.amount }}</span>
+				</button>
+			</div>
+		</section>
+	</footer>
 </div>
-
-<!-- Ingredients -->
-<footer class="container">
-
-  <article class="row my-2 mb-4">
-    <section class="col-12">
-      <div class="list-group">
-        <div class="list-group-item list-group-item-action active" aria-current="true">
-
-          <!-- Ingredient Section Title -->
-          <h4 class="d-inline">Ingredients</h4>
-
-          <!-- Ingredient buy all Button -->
-          <button class="btn btn-dark float-right" (click)="addAllIngredients();">
-            All To Shopping Cart
-          </button>
-        </div>
-
-        <!-- Every single ingredient -->
-        <button
-          type="button"
-          class="list-group-item list-group-item-action"
-          *ngFor="let ing of recipeSelected.ingredients; let i = index;"
-          (click)="addIngredient(ing)"
-        >
-          {{ (i + 1) + '. ' + ing.name }}
-          <span class="badge badge-info">{{ ing.amount }}</span>
-        </button>
-      </div>
-    </section>
-  </article>
-</footer>
-

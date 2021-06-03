@@ -1,17 +1,14 @@
-// Angular imports
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-// Directives
-import { GallaryDetailsDirective } from './directives/gallary-details.directive';
-
-// Routing
+// *------------------ Router -----------------*/
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
-// Components
+// *------------------ Comoponents -----------------*/
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -22,11 +19,15 @@ import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ErrorHandleComponent } from './error-handle/error-handle.component';
+import { AboutComponent } from './about/about.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { FeaturesComponent } from './features/features.component';
+import { FooterComponent } from './footer/footer.component';
 
-// icons
+// *------------------ Icon Library -----------------*/
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Angular Material UI
+// *------------------ Mat Componenets -----------------*/
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -36,50 +37,47 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 
-// Pipes
+// *------- Pipe -------*/
 import { ShortenPipe } from './Pipes/shorten.pipe';
-import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
-import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainNavComponent,
-    HomeComponent,
-    RecipesComponent,
-    RecipeDetailsComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    ErrorHandleComponent,
-    RecipeEditComponent,
-    GallaryDetailsDirective,
-    ShortenPipe,
-    FooterComponent,
-    AboutComponent,
-    UpgradeComponent,
-    FeaturesComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    FontAwesomeModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatSnackBarModule,
-    MatCardModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		MainNavComponent,
+		HomeComponent,
+		RecipesComponent,
+		RecipeDetailsComponent,
+		RecipeItemComponent,
+		ShoppingListComponent,
+		ShoppingEditComponent,
+		ErrorHandleComponent,
+		RecipeEditComponent,
+		ShortenPipe,
+		FooterComponent,
+		AboutComponent,
+		UpgradeComponent,
+		FeaturesComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		ReactiveFormsModule,
+		BrowserAnimationsModule,
+        HttpClientModule,
+		FontAwesomeModule,
+		LayoutModule,
+		MatToolbarModule,
+		MatButtonModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatListModule,
+		MatMenuModule,
+		MatSnackBarModule,
+		MatCardModule,
+
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

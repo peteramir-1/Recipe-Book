@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import "~@angular/material/theming";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 
 .mat-drawer-container {
   background-color: white;
@@ -9,7 +9,6 @@
   .mat-toolbar {
     background: transparent;
     height: 100px;
-    margin-bottom: 5rem;
 
     .logo {
       flex: auto;
@@ -66,7 +65,7 @@
         background-color: #8c8c8c !important;
         color: white !important;
         &:hover {
-          box-shadow: none
+          box-shadow: none;
         }
       }
     }
@@ -88,7 +87,7 @@
   background-position: center;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

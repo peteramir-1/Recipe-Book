@@ -1,36 +1,75 @@
 <div class="footer-bg">
-  <div class="container-fluid">
-    <article class="row justify-content-around">
-      <section class="col-4">
-        <form class="form-group" #contactForm="ngForm" (ngSubmit)="sendToContact()">
-          <div class="form-control">
-            <label for="nameInput" class="form-label">Name</label>
-            <input type="text" ngModel name="name" required class="form-control" placeholder="name" aria-label="name" aria-describedby="name-input">
-            <label for="emailInput" class="form-label">Email</label>
-            <input type="email" ngModel name="email" required class="form-control" placeholder="example@example.com" aria-label="email" aria-describedby="email-input">
-            <label for="contentInput" class="form-label">Content</label>
-            <textarea class="form-control" ngModel name="message" required placeholder="message" rows="4" aria-label="name" aria-describedby="content-input"></textarea>
-            <button class="btn btn-light mt-4" type="submit" [disabled]="contactForm.invalid">Send</button>
-          </div>
-        </form>
-      </section>
-      <section class="col-2">
-        <h2>Most Visited</h2>
-        <div class="nav-links">
-          <a *ngFor="let link of navLinks" [routerLink]="link.url">{{ link.name | titlecase }}</a>
-        </div>
-      </section>
-      <section class="col-3">
-        <div class="logo mb-4">
-          <img [src]="logo" alt="logo">
-        </div>
-        <div class="mb-2">
-          <p>Phone: 111-1111-111</p>
-        </div>
-        <div class="mb-2">
-          <p>Email: company@gmail.com</p>
-        </div>
-      </section>
-    </article>
-  </div>
+	<div class="container-fluid">
+		<article class="row justify-content-around">
+			<section class="col-4">
+				<form 
+					class="form-group"
+					#contactForm="ngForm"
+					(ngSubmit)="sendToContact()"
+				>
+					<div class="form-control">
+						<label for="nameInput" class="form-label">Name</label>
+						<input
+							type="text"
+							ngModel
+							name="name"
+							required
+							class="form-control"
+							placeholder="name"
+							aria-label="name"
+							aria-describedby="name-input"
+						/>
+						<label for="emailInput" class="form-label">Email</label>
+						<input
+							type="email"
+							ngModel
+							name="email"
+							required
+							class="form-control"
+							placeholder="example@example.com"
+							aria-label="email"
+							aria-describedby="email-input"
+						/>
+						<label for="contentInput" class="form-label">Content</label>
+						<textarea 
+							class="form-control"
+							ngModel
+							name="message"
+							required
+							placeholder="message"
+							rows="4"
+							aria-label="name"
+							aria-describedby="content-input"
+						></textarea>
+						<button
+							class="btn btn-light mt-4"
+							type="submit"
+							[disabled]="contactForm.invalid"
+						>
+							Send
+						</button>
+					</div>
+				</form>
+			</section>
+			<section class="col-2">
+				<h2>Most Visited</h2>
+				<div class="nav-links">
+					<a *ngFor="let link of navLinks" [routerLink]="link.url"
+						>{{ link.name | titlecase }}</a
+					>
+				</div>
+			</section>
+			<section class="col-3">
+				<div class="logo mb-4">
+					<img [src]="logo" alt="logo" />
+				</div>
+				<div class="mb-2">
+					<p>Phone: 111-1111-111</p>
+				</div>
+				<div class="mb-2">
+					<p>Email: company@gmail.com</p>
+				</div>
+			</section>
+		</article>
+	</div>
 </div>

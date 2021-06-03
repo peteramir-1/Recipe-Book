@@ -1,7 +1,6 @@
-// Angular imports
 import { Component, Input } from '@angular/core';
 
-// Models
+// *------- Models -------*/
 import { recipeModel } from '../../models/recipe.model';
 
 @Component({
@@ -10,9 +9,7 @@ import { recipeModel } from '../../models/recipe.model';
 	styleUrls: ['./recipe-item.component.scss'],
 })
 export class RecipeItemComponent {
-  // Properties
 	@Input() recipe: recipeModel;
 
 	constructor() {}
-
 }

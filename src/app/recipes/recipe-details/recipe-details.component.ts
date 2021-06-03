@@ -1,65 +1,86 @@
-// Angular imports
-import { Component, OnInit } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	AfterViewInit,
+	AfterViewChecked,
+} from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 
-// Services
+// *------- Services -------*/
 import { RecipeService } from './../../services/recipe.service';
 
-// Models
+// *------- Models -------*/
 import { recipeModel } from './../../models/recipe.model';
 import { ingredient } from '../../models/ingredient.model';
 
-// Icons imports
-import { faArrowDown, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+// *------- Fa Icons -------*/
+import {
+	faArrowDown,
+	faPlus,
+	faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 	selector: 'app-recipe-details',
 	templateUrl: './recipe-details.component.html',
 	styleUrls: ['./recipe-details.component.scss'],
 })
-export class RecipeDetailsComponent implements OnInit {
-	// Properties
-  recipeSelected: recipeModel;
-  recipeIndex: number;
+export class RecipeDetailsComponent
+	implements OnInit, AfterViewInit, AfterViewChecked {
+	recipeSelected: recipeModel;
+	recipeIndex: number;
 
-  // State
-  openDropdown = false;
+	// *------- Fa Icons -------*/
+	readonly arrow = faArrowDown;
+	readonly plusIcon = faPlus;
+	readonly cartIcon = faShoppingCart;
 
-  // Icons
-  readonly arrow = faArrowDown;
-  readonly plusIcon = faPlus;
-  readonly cartIcon = faShoppingCart;
+	// *------- States -------*/
+	// todo  control states from one place in the program
+	openDropdown = false;
 
-	constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) {}
+	constructor(
+		private recipeService: RecipeService,
+		private router: Router,
+		private route: ActivatedRoute
+	) {}
 
 	ngOnInit(): void {
-    this.route.data.subscribe((data: Data) => {
-      this.recipeSelected = data['recipe']
-    });
+		this.route.data.subscribe((data: Data) => {
+			this.recipeSelected = data.recipe;
+		});
 
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.recipeIndex = (+params.get('id')) - 1;
-    });
-  }
-
-  // Function to send only one ingredient to shoppinglist component
-	addIngredient(ing: ingredient) {
-		this.recipeService.selectIng([ing]);
+		this.route.paramMap.subscribe((params: ParamMap) => {
+			this.recipeIndex = +params.get('id') - 1;
+		});
 	}
 
-  // Funtion to send Ingredients of the recipe to shoppinglist component
-  addAllIngredients() {
-    this.recipeService.selectIng(this.recipeSelected.ingredients);
-  }
+	ngAfterViewInit(): void {}
 
-  // Function deletes the selected recipe
-  deleteRecipe() {
-    this.recipeService.deleteRecipe(this.recipeIndex);
-    this.router.navigate(['recipes']);
-  }
+	ngAfterViewChecked(): void {
+		this.recipeService.initiateDetailDrawer.next(true);
+	}
 
-  // Open/Close Dropdown
-  closeDropdown() {
-    this.openDropdown = false;
-  }
+	/**
+	 * ? used to add an ingredients to shopping list
+	 *
+	 * @param {ingredient} ing
+	 * @memberof RecipeDetailsComponent
+	 */
+	addIngredient(ing: ingredient): void {
+		this.recipeService.addRecipeIng([ing]); // Send only one ingredient to shoppinglist component
+	}
+
+	addAllIngredients(): void {
+		this.recipeService.addRecipeIng(this.recipeSelected.ingredients); // Send Ingredients of the recipe to shoppinglist component
+	}
+
+	deleteRecipe(): void {
+		this.recipeService.deleteRecipe(this.recipeIndex); // Deletes the selected recipe
+		this.router.navigate(['recipes']); // Navigate Away
+	}
+
+	closeDropdown(): void {
+		this.openDropdown = false; // Open/Close Dropdown
+	}
 }

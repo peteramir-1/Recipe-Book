@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@600&display=swap");
 
 // Bootstrap imports
 @import "../../../node_modules/bootstrap/scss/functions.scss";
@@ -18,7 +18,7 @@
 }
 
 .trans {
-  color: white!important;
+  color: white !important;
 }
 
 // Signin Promo
@@ -30,26 +30,21 @@
   }
 }
 
-
 // Media-breakpoints:
 // :::::::::::::::::
 
 // Extra small devices
 @include media-breakpoint-down(xs) {
-
 }
 
 // Small devices
 @include media-breakpoint-up(sm) {
-
 }
 
 // Medium devices
 @include media-breakpoint-up(md) {
-
 }
 
 // Large devices
 @include media-breakpoint-up(lg) {
-
 }

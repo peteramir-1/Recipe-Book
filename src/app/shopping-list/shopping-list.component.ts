@@ -1,14 +1,13 @@
-// Angular imports
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 
-// Services
+// *------- Services -------*/
 import { ShoppingListService } from './../services/shopping-list.service';
 
-// Models
+// *------- Models -------*/
 import { ingredient } from '../models/ingredient.model';
 
-// ICONS
+// *------- Fa Icons -------*/
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -17,26 +16,29 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 	styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
-	// Properties
-  ingredients: ingredient[];
+	ingredients: ingredient[];
 
-  // Icons
-  readonly faClose = faTimes ;
+	// *------- Fa Icons -------*/
+	readonly faClose = faTimes;
 
 	constructor(
-      private route: ActivatedRoute,
-      private shoppingListService: ShoppingListService,
-    ) {}
+		private route: ActivatedRoute,
+		private shoppingListService: ShoppingListService
+	) {}
 
 	ngOnInit(): void {
+		this.route.data.subscribe((data: Data) => {
+			this.ingredients = data.ingredients;
+		});
+	}
 
-    this.route.data.subscribe((data: Data) => {
-      this.ingredients = data.ingredients;
-    });
-  }
-
-  // Delete ingredient from the Shopping List
-  deleteIng(i: number): void {
-    this.ingredients.splice(i, 1);
-  }
+	/**
+	 * ? delete an ingredient from shopping list
+	 *
+	 * @param {number} i
+	 * @memberof ShoppingListComponent
+	 */
+	deleteIng(i: number): void {
+		this.shoppingListService.deleteAnIng(i);
+	}
 }

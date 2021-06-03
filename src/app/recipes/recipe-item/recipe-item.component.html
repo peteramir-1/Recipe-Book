@@ -1,14 +1,15 @@
-<div class="card">
-  <!-- Recipe Image -->
-  <img class="card-img-top" [src]="recipe.imgPath" [alt]="recipe.name" />
+<div class="col">
+	<div class="card">
+		<!-- Recipe Image -->
+		<img class="card-img-top" [src]="recipe.imgPath" [alt]="recipe.name" />
 
-  <!-- Recipe Body -->
-  <section class="card-body">
+		<!-- Recipe Body -->
+		<section class="card-body">
+			<!-- Recipe Name -->
+			<h5 class="card-title">{{ recipe.name | titlecase }}</h5>
 
-    <!-- Recipe Name -->
-    <h5 class="card-title">{{ recipe.name | titlecase }}</h5>
-
-    <!-- Recipe Description -->
-    <p class="card-text text-muted ">{{ recipe.description | shorten }}</p>
-  </section>
+			<!-- Recipe Description -->
+			<p class="card-text text-muted">{{ recipe.description | shorten }}</p>
+		</section>
+	</div>
 </div>

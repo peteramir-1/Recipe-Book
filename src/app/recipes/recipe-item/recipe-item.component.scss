@@ -1,14 +1,17 @@
 // Bootstrap imports
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables.scss';
-@import '~bootstrap/scss/mixins/breakpoints';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables.scss";
+@import "~bootstrap/scss/mixins/breakpoints";
 
-.card-title {
-  font-size: 1.1rem
-}
+.card {
+  border: none;
+  .card-title {
+    font-size: 1.1rem;
+  }
 
-.card-text {
-  font-size: 0.8rem
+  .card-text {
+    font-size: 0.8rem;
+  }
 }
 
 // Media-breakpoints:
@@ -16,21 +19,16 @@
 
 // Large devices
 @include media-breakpoint-down(lg) {
-
 }
 
 // Medium devices
 @include media-breakpoint-down(md) {
-
 }
 
 // Small devices
 @include media-breakpoint-down(sm) {
-
 }
 
 // Extra small devices
 @include media-breakpoint-down(xs) {
-
 }
-

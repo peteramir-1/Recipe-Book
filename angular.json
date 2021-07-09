@@ -28,12 +28,12 @@
               "src/assets"
             ],
 						"styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/global-theme.scss",
+							"src/global-theme.scss",
 							"src/styles.scss"
 						],
 						"scripts": [
-              "node_modules/jquery/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
 					},
@@ -92,7 +92,7 @@
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss"],
+						"styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.scss"],
 						"scripts": []
 					}
 				},

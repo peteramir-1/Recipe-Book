@@ -11,6 +11,7 @@ import { RecipeService } from './../services/recipe.service';
 
 //*------- Models -------*/
 import { recipeModel } from '../models/recipe.model';
+import { ingredient } from '../models/ingredient.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -41,8 +42,33 @@ export class recipeDataResolver implements Resolve<recipeModel | recipeModel[]> 
 		return new Promise((resolve, reject) => {
 			const recipeData: recipeModel[] = this.recipeService.fetchRecipes();
 			if (route.paramMap.has('id')) {
-				const id = +route.params.id - 1;
-				resolve(recipeData[id]);
+				const recipeDetails = this.recipeService.fetchRecipeById(+route.params.id).subscribe(Data => {
+					let description: string = '';
+					let ingredients: ingredient[] = []
+					for(let ins of Data['instructions']) {
+					  description += ins['display_text']
+					}
+					for(let component of Data['sections'][0]["components"]) {
+					  let componentA: string;
+					  for (let componentAmount of component["measurements"]) {
+						componentA = componentAmount["quantity"];
+					  }
+					  ingredients.push(
+						new ingredient(
+						  component['raw_text'],
+						  componentA
+						  )
+						);
+					}
+					resolve( new recipeModel(
+					  Data['name'],
+					  Data['description'],
+					  description,
+					  Data['thumbnail_url'],
+					  ingredients,
+					  Data['id']
+					))
+				  });
 			} else {
 				resolve(recipeData);
 			}

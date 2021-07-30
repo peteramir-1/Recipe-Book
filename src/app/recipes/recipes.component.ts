@@ -68,8 +68,8 @@ export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
 	 * @param {number} i
 	 * @memberof RecipesComponent
 	 */
-	openDetail(i: number): void {
-		const route = `${i + 1}/detail`;
+	openDetail(id: number): void {
+		const route = `${id}/detail`;
 		this.router.navigate([route], { relativeTo: this.route });
 		this.detailDrawer.open();
 	}

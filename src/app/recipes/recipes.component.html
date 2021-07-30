@@ -9,7 +9,7 @@
 					*ngFor="let recipe of recipes; let i = index;"
           class="card-column"
 					[recipe]="recipe"
-					(click)="openDetail(i)"
+					(click)="openDetail(recipe.id)"
 					routerLinkActive="recipe-opened shadow-lg"
 				></app-recipe-item>
 			</article>

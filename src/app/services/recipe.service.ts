@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 // *------- Model -------*/
 import { recipeModel } from './../models/recipe.model';
@@ -41,9 +41,6 @@ export class RecipeService {
         for (let recipeData of Data['results']) {
           let ingredients: ingredient[] = [];
           let instructions: string = '';
-          console.log(Data);
-          console.log(recipeData);
-          console.log(recipeData["sections"]);
           for(let component of recipeData['sections'][0]["components"]) {
             let componentA: string;
             for (let componentAmount of component["measurements"]) {
@@ -72,6 +69,18 @@ export class RecipeService {
         }
       });
     return data
+  }
+
+  fetchRecipeById(id: number): Observable<any> {
+    let data: recipeModel;
+    return this.http.get(
+      `https://tasty.p.rapidapi.com/recipes/detail?id=${id}`, {
+        headers: {
+          'x-rapidapi-key': 'a5a7981f86msh016f80f350e57edp1f3646jsn0ea0ecd6b9ea',
+          'x-rapidapi-host': 'tasty.p.rapidapi.com'
+        }
+      }
+    )
   }
 	/**
 	 *

@@ -163,7 +163,8 @@ export class RecipeEditComponent implements OnInit {
 					this.recipeForm.value.description,
 					this.recipeForm.value.preparation,
 					this.recipeForm.value.imageUrl,
-					this.ingredients
+					this.ingredients,
+          this.recipeIndex
 				); // Define the New Edition of the recipe
 				this.recipeService.editRecipe(NewEditionRecipe, this.recipeIndex); // edit the Recipe selected
 				this.router.navigate(['../'], { relativeTo: this.route }); // Navigate 1 path back
@@ -173,7 +174,8 @@ export class RecipeEditComponent implements OnInit {
 					this.recipeForm.value.description,
 					this.recipeForm.value.preparation,
 					this.recipeForm.value.imageUrl,
-					this.ingredients
+					this.ingredients,
+          this.recipeIndex
 				); // Define the New Recipe
 				this.recipeService.addRecipe(NewRecipe); // Add it to the Recipes database
 				this.router.navigate(['recipes']); // navigate to recipes

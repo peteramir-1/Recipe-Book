@@ -7,6 +7,7 @@ import { ingredient } from '../models/ingredient.model';
 
 // *------- Services -------*/
 import { ShoppingListService } from './shopping-list.service';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
 	providedIn: 'root',
 })
@@ -18,200 +19,60 @@ export class RecipeService {
 	 * @type {recipeModel[]}
 	 * @memberof RecipeService
 	 */
-	recipes: recipeModel[] = [
-		new recipeModel(
-			'lorem ipsum 1',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 2',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 3',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 4',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 5',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 6',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 7',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 8',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-		new recipeModel(
-			'lorem ipsum 9',
-			'Aliqua deserunt exercitation fugiat incididunt eiusmod elit ut veniam quis aliquip consequat est qui Lorem.',
-			'Mollit ad deserunt aliqua minim. Elit cillum fugiat ea veniam. Eiusmod incididunt consequat ullamco sit aute incididunt magna aliquip reprehenderit quis mollit in ipsum ex. Consectetur ad tempor aute ullamco officia. Et veniam culpa duis in consectetur do Lorem ex ullamco. Exercitation et nisi consequat elit ea ea cupidatat consequat laboris id veniam commodo consectetur.',
-			'../../assets/recipe-pic.jpg',
-			[
-				new ingredient('Large Ripe Heirloom Tomatoes', '2'),
-				new ingredient('Large Red Onion', '1'),
-				new ingredient('Sea Salt', '1'),
-				new ingredient('Freshly ground black pepper', '1'),
-				new ingredient('Olive Oil', '1'),
-				new ingredient('Ground Beef', '2.5'),
-				new ingredient('Kosher salt', '1'),
-				new ingredient('slices American cheese', '6'),
-				new ingredient('Leaf or Romaine Lettuce Leaves', '6'),
-				new ingredient('Ketchup', '1'),
-				new ingredient('Mayonnaise', '1'),
-				new ingredient('Mustard', '1'),
-				new ingredient('Telera Roll', '1'),
-			]
-		),
-	];
+	recipes: recipeModel[];
 
-	constructor(private shoppingListService: ShoppingListService) {}
+	constructor(
+    private shoppingListService: ShoppingListService,
+    private http: HttpClient
+    ) {}
 
+
+
+  fetchRecipes() {
+    let data = [];
+    this.http.get('https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes',
+      {
+        headers: {
+          'x-rapidapi-key': 'a5a7981f86msh016f80f350e57edp1f3646jsn0ea0ecd6b9ea',
+          'x-rapidapi-host': 'tasty.p.rapidapi.com'
+        }
+      })
+      .subscribe(Data => {
+        for (let recipeData of Data['results']) {
+          let ingredients: ingredient[] = [];
+          let instructions: string = '';
+          console.log(Data);
+          console.log(recipeData);
+          console.log(recipeData["sections"]);
+          for(let component of recipeData['sections'][0]["components"]) {
+            let componentA: string;
+            for (let componentAmount of component["measurements"]) {
+              componentA = componentAmount["quantity"];
+            }
+            ingredients.push(
+              new ingredient(
+                component['raw_text'],
+                componentA
+                )
+              );
+          }
+          for(let inst of recipeData['instructions']) {
+            instructions += inst['display_text'];
+          }
+          data.push(
+            new recipeModel(
+              recipeData["name"],
+              recipeData["description"],
+              instructions,
+              recipeData["thumbnail_url"],
+              ingredients,
+              recipeData["id"]
+              )
+            )
+        }
+      });
+    return data
+  }
 	/**
 	 *
 	 * ? it adds an ingredient into the shopping list

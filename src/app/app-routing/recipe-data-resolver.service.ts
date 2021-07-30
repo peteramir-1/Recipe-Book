@@ -39,7 +39,7 @@ export class recipeDataResolver implements Resolve<recipeModel | recipeModel[]> 
 		| Promise<recipeModel | recipeModel[]> {
 		// It return a promise with the recipe array..
 		return new Promise((resolve, reject) => {
-			const recipeData: recipeModel[] = this.recipeService.recipes;
+			const recipeData: recipeModel[] = this.recipeService.fetchRecipes();
 			if (route.paramMap.has('id')) {
 				const id = +route.params.id - 1;
 				resolve(recipeData[id]);

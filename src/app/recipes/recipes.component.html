@@ -7,6 +7,7 @@
 			<article class="row row-cols-3 g-5">
 				<app-recipe-item
 					*ngFor="let recipe of recipes; let i = index;"
+          class="card-column"
 					[recipe]="recipe"
 					(click)="openDetail(i)"
 					routerLinkActive="recipe-opened shadow-lg"

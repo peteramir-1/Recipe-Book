@@ -15,6 +15,7 @@ export class recipeModel {
 		public description: string,
 		public preparation: string,
 		public imgPath: string,
-		public ingredients: ingredient[]
+		public ingredients: ingredient[],
+    public id: number
 	) {}
 }

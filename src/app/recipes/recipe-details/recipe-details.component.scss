@@ -3,21 +3,48 @@
 @import "~bootstrap/scss/variables.scss";
 @import "~bootstrap/scss/mixins/breakpoints";
 
+.detail-container {
+    padding: 4rem 1.2rem;
+    img {
+        width: auto;
+    }
+    
+    .text-wrap {
+        float: right;
+        margin: 5px
+    }
+    
+    section.dis-mobile section section section.img-des-container {
+        height: fit-content;
+        img {
+            width: 200px;
+        }
+    }
+}
 // Media-breakpoints:
 // :::::::::::::::::
 
-// Large devices
-@include media-breakpoint-down(lg) {
-}
-
-// Medium devices
-@include media-breakpoint-down(md) {
+// Extra small devices
+@include media-breakpoint-up(xs) {
 }
 
 // Small devices
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-up(sm) {
 }
 
-// Extra small devices
-@include media-breakpoint-down(xs) {
+// Medium devices
+@include media-breakpoint-up(md) {
+    .detail-container {
+        padding: 4rem 2.2rem;
+    }
 }
+
+// Large devices
+@include media-breakpoint-up(lg) {
+    .detail-container {
+        padding: 4rem 3.2rem;
+    }
+}
+
+
+

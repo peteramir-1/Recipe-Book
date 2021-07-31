@@ -1,95 +1,180 @@
-<!-- Container ==> title + dropdown -->
-<div class="container py-5">
+<!-- Container -->
+<div class="container-fluid py-5 detail-container">
 	<header class="row py-2">
-		<!-- Title -->
-		<section class="col col-xl-7 mb-3 mb-xl-0">
-			<h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
-		</section>
+		<section class="col-12 col-lg-6 order-2 order-lg-1">
+			<section class="row">
 
-		<!-- Dropdown -->
-		<section class="col-12 col-xl-2 align-self-center">
-			<div class="dropdown">
-				<button
-					class="btn btn-dark dropdown-toggle"
-					type="button"
-					id="manage_recipe_dropdown"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-					appDropdown="left"
-				>
-					Manage Recipe
-				</button>
-				<div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
-					<a
-						class="dropdown-item"
-						routerLink="edit"
-						queryParamsHandling="preserve"
-					>
-						Edit Recipe
-					</a>
-					<a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
-				</div>
-			</div>
-		</section>
+				<!-- Display mobile start -->
+				<section class="col-12 d-block d-sm-none dis-mobile">
+					<section class="row">
+						<section class="col">
+							<section class="row">
+								<!-- Title -->
+								<section class="col">
+									<h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
+								</section>
+							</section>
+						</section>
+						<section class="col-12 my-3">
+							<section class="row">
+								<section class="col img-des-container">
+									<!-- Image -->
+									<img class="img-thumbnail shadow-sm text-wrap" [src]="recipeSelected.imgPath"
+										[alt]="recipeSelected.name" />
 
-		<!-- Description -->
-		<section class="col-12 mt-3">
-			<p class="text-muted">{{ recipeSelected.description }}</p>
+									<!-- Dropdown -->
+									<div class="dropdown my-2">
+										<button class="btn btn-dark dropdown-toggle" type="button"
+											id="manage_recipe_dropdown" data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false" appDropdown="left">
+											Manage Recipe
+										</button>
+										<div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
+											<a class="dropdown-item" routerLink="edit" queryParamsHandling="preserve">
+												Edit Recipe
+											</a>
+											<a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
+										</div>
+									</div>
+
+									<!-- Description -->
+									<p class="text-muted">{{ recipeSelected.description }}</p>
+								</section>
+							</section>
+						</section>
+					</section>
+				</section>
+				<!-- Display on mobile END -->
+
+				<!-- Display tablet start -->
+				<section class="col-12 d-none d-sm-block d-lg-none">
+					<section class="row">
+						<section class="col">
+							<section class="row">
+								<!-- Title -->
+								<section class="col">
+									<h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
+								</section>
+
+								<!-- Dropdown -->
+								<section class="col-12 my-3">
+									<div class="dropdown">
+										<button class="btn btn-dark dropdown-toggle" type="button"
+											id="manage_recipe_dropdown" data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false" appDropdown="left">
+											Manage Recipe
+										</button>
+										<div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
+											<a class="dropdown-item" routerLink="edit" queryParamsHandling="preserve">
+												Edit Recipe
+											</a>
+											<a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
+										</div>
+									</div>
+								</section>
+
+								<!-- Description -->
+								<section class="col-12 my-2">
+									<section class="row">
+										<section class="col">
+											<p class="text-muted">{{ recipeSelected.description }}</p>
+										</section>
+									</section>
+								</section>
+							</section>
+						</section>
+						<section class="col">
+							<section class="row">
+								<!-- Image -->
+								<section class="col">
+									<img class="img-thumbnail shadow-sm" [src]="recipeSelected.imgPath"
+										[alt]="recipeSelected.name" />
+								</section>
+							</section>
+						</section>
+					</section>
+				</section>
+				<!-- Display on tablet END -->
+
+				<!-- Display on desktop start -->
+				<section class="col-12 d-none d-lg-block">
+					<section class="row justify-content-between align-items-center">
+						<!-- Title -->
+						<section class="col">
+							<h2 class="mb-0 text-danger">{{ recipeSelected.name | titlecase }}</h2>
+						</section>
+
+						<!-- Dropdown -->
+						<section class="col-auto my-3">
+							<div class="dropdown">
+								<button class="btn btn-dark dropdown-toggle" type="button" id="manage_recipe_dropdown"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+									appDropdown="left">
+									Manage Recipe
+								</button>
+								<div class="dropdown-menu" aria-labelledby="manage_recipe_dropdown">
+									<a class="dropdown-item" routerLink="edit" queryParamsHandling="preserve">
+										Edit Recipe
+									</a>
+									<a class="dropdown-item" (click)="deleteRecipe()">Delete Recipe</a>
+								</div>
+							</div>
+						</section>
+					</section>
+				</section>
+				<!-- Display on desktop END -->
+
+				<!-- Description on desktop -->
+				<section class="col-12 d-none d-lg-block">
+					<section class="row">
+						<section class="col">
+							<p class="text-muted">{{ recipeSelected.description }}</p>
+						</section>
+					</section>
+				</section>
+
+				<section class="col-12">
+					<section class="row">
+						<!-- How to Prepare Section -->
+						<section class="col-12">
+							<h2 class="text-dark font-weight-light mb-2">How to prepare:</h2>
+							<p class="text-muted">{{ recipeSelected.preparation }}</p>
+						</section>
+					</section>
+				</section>
+
+				<section class="col-12">
+					<section class="row">
+						<!-- Ingredients -->
+						<section class="col-12">
+							<div class="list-group">
+								<div class="list-group-item list-group-item-action active" aria-current="true">
+									<!-- Ingredient Section Title -->
+									<h4 class="d-inline">Ingredients</h4>
+
+									<!-- Ingredient buy all Button -->
+									<button class="btn btn-dark float-right" (click)="addAllIngredients();">
+										All To Shopping Cart
+									</button>
+								</div>
+
+								<!-- Every single ingredient -->
+								<button type="button" class="list-group-item list-group-item-action"
+									*ngFor="let ing of recipeSelected.ingredients; let i = index;"
+									(click)="addIngredient(ing)">
+									{{ (i + 1) + '. ' + ing.name }}
+									<span class="badge badge-info">{{ ing.amount }}</span>
+								</button>
+							</div>
+						</section>
+					</section>
+				</section>
+
+			</section>
+		</section>
+		<!-- Image on desktop -->
+		<section class="col-12 col-lg-6 d-none d-lg-block order-1 order-lg-2">
+			<img class="img-thumbnail shadow-sm" [src]="recipeSelected.imgPath" [alt]="recipeSelected.name" />
 		</section>
 	</header>
-
-	<!-- Details Content -->
-	<!-- Image -->
-	<article class="row justify-content-center">
-		<section class="col-12">
-			<img
-				class="img-thumbnail shadow-sm"
-				[src]="recipeSelected.imgPath"
-				[alt]="recipeSelected.name"
-			/>
-		</section>
-	</article>
-
-	<!-- How to Prepare Section -->
-	<article class="row py-5">
-		<section class="col-12">
-			<h2 class="text-dark font-weight-light mb-2">How to prepare:</h2>
-			<p class="text-muted">{{ recipeSelected.preparation }}</p>
-		</section>
-	</article>
-
-	<!-- Ingredients -->
-	<footer class="row my-2 mb-4">
-		<section class="col-12">
-			<div class="list-group">
-				<div
-					class="list-group-item list-group-item-action active"
-					aria-current="true"
-				>
-					<!-- Ingredient Section Title -->
-					<h4 class="d-inline">Ingredients</h4>
-
-					<!-- Ingredient buy all Button -->
-					<button
-						class="btn btn-dark float-right"
-						(click)="addAllIngredients();"
-					>
-						All To Shopping Cart
-					</button>
-				</div>
-
-				<!-- Every single ingredient -->
-				<button
-					type="button"
-					class="list-group-item list-group-item-action"
-					*ngFor="let ing of recipeSelected.ingredients; let i = index;"
-					(click)="addIngredient(ing)"
-				>
-					{{ (i + 1) + '. ' + ing.name }}
-					<span class="badge badge-info">{{ ing.amount }}</span>
-				</button>
-			</div>
-		</section>
-	</footer>
 </div>

@@ -9,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor () {}
+
+  onActivate(event) {
+    document.body.scrollTop = 0;
+  }
 }

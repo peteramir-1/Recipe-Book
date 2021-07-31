@@ -23,14 +23,8 @@ import { Subscription } from 'rxjs';
 	styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild('detailDrawer') detailDrawer: MatDrawer;
 	public recipes: recipeModel[];
     
-	// *------- States -------*/
-    //todo  Manage all states from one file 
-	public sidebarState = false;
-	private detailOpened: Subscription;
-
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
@@ -43,24 +37,9 @@ export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
 		});
 	}
 
-	ngAfterViewInit(): void {
-		this.detailOpened = this.recipeService.initiateDetailDrawer.subscribe(
-			() => {
-				this.detailDrawer.open(); // open drawer when detail is open
+	ngAfterViewInit(): void {}
 
-                // ? Observable unsubscribtion to avoid repetition +of opening of the detail panel
-				this.detailOpened.unsubscribe();
-			}
-		);
-
-		this.detailDrawer.closedStart.subscribe(() => {
-			this.router.navigate(['recipes']); // when detail panel is closed move to ./recipes
-		});
-	}
-
-	ngOnDestroy(): void {
-		this.detailOpened.unsubscribe();
-	}
+	ngOnDestroy(): void {}
 
 	/**
 	 *
@@ -71,6 +50,5 @@ export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
 	openDetail(id: number): void {
 		const route = `${id}/detail`;
 		this.router.navigate([route], { relativeTo: this.route });
-		this.detailDrawer.open();
 	}
 }

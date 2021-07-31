@@ -1,8 +1,7 @@
 import {
 	Component,
 	OnInit,
-	AfterViewInit,
-	AfterViewChecked,
+	AfterViewInit
 } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 
@@ -26,7 +25,7 @@ import {
 	styleUrls: ['./recipe-details.component.scss'],
 })
 export class RecipeDetailsComponent
-	implements OnInit, AfterViewInit, AfterViewChecked {
+	implements OnInit {
 	recipeSelected: recipeModel;
 	recipeIndex: number;
 
@@ -41,7 +40,6 @@ export class RecipeDetailsComponent
 
 	constructor(
 		private recipeService: RecipeService,
-		private router: Router,
 		private route: ActivatedRoute
 	) {}
 
@@ -53,12 +51,6 @@ export class RecipeDetailsComponent
 		this.route.paramMap.subscribe((params: ParamMap) => {
 			this.recipeIndex = +params.get('id') - 1;
 		});
-	}
-
-	ngAfterViewInit(): void {}
-
-	ngAfterViewChecked(): void {
-		this.recipeService.initiateDetailDrawer.next(true);
 	}
 
 	/**
@@ -73,14 +65,5 @@ export class RecipeDetailsComponent
 
 	addAllIngredients(): void {
 		this.recipeService.addRecipeIng(this.recipeSelected.ingredients); // Send Ingredients of the recipe to shoppinglist component
-	}
-
-	deleteRecipe(): void {
-		this.recipeService.deleteRecipe(this.recipeIndex); // Deletes the selected recipe
-		this.router.navigate(['recipes']); // Navigate Away
-	}
-
-	closeDropdown(): void {
-		this.openDropdown = false; // Open/Close Dropdown
 	}
 }

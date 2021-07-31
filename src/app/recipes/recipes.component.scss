@@ -2,22 +2,6 @@
 @import "~bootstrap/scss/variables.scss";
 @import "~bootstrap/scss/mixins/breakpoints";
 
-.section {
-  padding: 1.5rem auto;
-}
-
-mat-drawer-container,
-mat-drawer-content {
-  background: transparent;
-}
-
-mat-drawer-content {
-  padding: 5rem 0 10rem 0;
-}
-mat-drawer {
-  background: white;
-}
-
 // Media-breakpoints:
 // :::::::::::::::::
 

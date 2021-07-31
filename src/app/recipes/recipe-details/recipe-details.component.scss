@@ -3,8 +3,19 @@
 @import "~bootstrap/scss/variables.scss";
 @import "~bootstrap/scss/mixins/breakpoints";
 
-.detail-container {
-    padding: 4rem 1.2rem;
+.container-fluid {
+    .detail-container {
+        padding: 4rem 1.2rem;
+    }
+
+    header {
+        box-shadow: 0px 0px 50px #555;
+        background: white;
+        // padding: 30px;
+        // padding-top: 50px;
+        // padding-bottom: 50px;
+    }
+
     img {
         width: auto;
     }

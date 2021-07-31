@@ -1,18 +1,10 @@
-<mat-drawer-container [hasBackdrop]="true">
-	<mat-drawer mode="over" #detailDrawer>
-		<router-outlet></router-outlet>
-	</mat-drawer>
-	<mat-drawer-content>
-		<div class="container section">
-			<article class="row row-cols-3 g-5">
-				<app-recipe-item
-					*ngFor="let recipe of recipes; let i = index;"
-          class="card-column"
-					[recipe]="recipe"
-					(click)="openDetail(recipe.id)"
-					routerLinkActive="recipe-opened shadow-lg"
-				></app-recipe-item>
-			</article>
-		</div>
-	</mat-drawer-content>
-</mat-drawer-container>
+<div class="container my-5">
+	<article class="row row-cols-3 g-5">
+		<app-recipe-item
+			*ngFor="let recipe of recipes; let i = index;"
+			[recipe]="recipe"
+			(click)="openDetail(recipe.id)"
+			routerLinkActive="recipe-opened shadow-lg"
+		></app-recipe-item>
+	</article>
+</div>

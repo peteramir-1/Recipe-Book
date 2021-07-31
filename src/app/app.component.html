@@ -1,5 +1,5 @@
 <!-- Main application -->
 <app-main-nav>
-	<router-outlet></router-outlet>
+	<router-outlet  (activate)="onActivate($event)"></router-outlet>
 	<app-footer></app-footer>
 </app-main-nav>

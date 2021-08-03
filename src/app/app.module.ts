@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // *------------------ Router -----------------*/
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -66,6 +67,7 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
 		BrowserAnimationsModule,
         HttpClientModule,
 		FontAwesomeModule,
+		FlexLayoutModule,
 		LayoutModule,
 		MatToolbarModule,
 		MatButtonModule,

@@ -16,7 +16,11 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 	styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
-	ingredients: ingredient[];
+	ingredients: ingredient[] = [
+		new ingredient('tomato', '5'), 
+		new ingredient('salt', '5'),
+		new ingredient('apple', '2')
+	];
 
 	// *------- Fa Icons -------*/
 	readonly faClose = faTimes;
@@ -27,9 +31,9 @@ export class ShoppingListComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.route.data.subscribe((data: Data) => {
-			this.ingredients = data.ingredients;
-		});
+		// this.route.data.subscribe((data: Data) => {
+		// 	this.ingredients = data.ingredients;
+		// });
 	}
 
 	/**

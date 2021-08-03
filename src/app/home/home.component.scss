@@ -6,6 +6,16 @@
 @import "../../../node_modules/bootstrap/scss/variables.scss";
 @import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
 
+// keyframes
+@keyframes zoomIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 // global home style
 .section {
   margin-top: 5rem;
@@ -28,6 +38,28 @@
   :is(p, button) {
     margin-left: 15px;
   }
+}
+
+.zoomin {
+  animation-name: zoomIn ;
+  -webkit-animation-name: zoomIn;
+  -moz-animation-name: zoomIn;
+  -o-animation-name: zoomIn;
+  
+  animation-duration: 7s;
+  -webkit-animation-duration: 7s;
+  -moz-animation-duration: 7s;
+  -o-animation-duration: 7s;
+  
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -o-animation-delay: 1s;
 }
 
 // Media-breakpoints:

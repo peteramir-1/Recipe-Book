@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 // *------------------ Services -----------------*/
@@ -7,23 +7,35 @@ import { RecipeService } from './../services/recipe.service';
 // *------------------ Models -----------------*/
 import { recipeModel } from '../models/recipe.model';
 
+// *------------------ Jquery -----------------*/
+import * as $ from 'jquery';
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+	@ViewChild('signinPromoImg')
+	signinImg: ElementRef;
 	recipes: recipeModel[] = [];
 	indexes: number[] = [];
 
-	constructor(private router: Router, private recipeService: RecipeService) {}
-
+	constructor(
+		private router: Router,
+		private recipeService: RecipeService,
+		private renderer: Renderer2
+		) {}
+	
 	ngOnInit(): void {
-		this.selectImagesDisplay(3); // Intialize the recipes of the carouselW
+		// this.selectImagesDisplay(3); // Intialize the recipes of the carouselW
+	}
+	
+	ngAfterViewInit(): void {
+		this.renderer.addClass(this.signinImg.nativeElement, 'zoomin');
 	}
 
-	//
-	/**
+	/*
 	 ** function that retun a sequence of numbers from start to end in an Array
 	 *
 	 * @param {number} start
@@ -50,18 +62,18 @@ export class HomeComponent implements OnInit {
 	 * @param {number} imgNum
 	 * @memberof HomeComponent
 	 */
-	selectImagesDisplay(imgNum: number): void {
-		const max = this.recipeService.recipes.length,
-			min = 0,
-			range = this.range(min, max);
+	// selectImagesDisplay(imgNum: number): void {
+	// 	const max = this.recipeService.recipes.length,
+	// 		min = 0,
+	// 		range = this.range(min, max);
 
-		for (let i = 0; i < imgNum ; i++) {
-			const index = Math.floor(Math.random() * range.length);
-			this.recipes.push(this.recipeService.recipes[range[index]]);
-			this.indexes.push(index);
-			range.splice(index, 1);
-		}
-	}
+	// 	for (let i = 0; i < imgNum ; i++) {
+	// 		const index = Math.floor(Math.random() * range.length);
+	// 		this.recipes.push(this.recipeService.recipes[range[index]]);
+	// 		this.indexes.push(index);
+	// 		range.splice(index, 1);
+	// 	}
+	// }
 
 	openRecipe(i: number): void {
 		this.router.navigate(['recipes', this.indexes[i] + 1]); // open recipe Clicked

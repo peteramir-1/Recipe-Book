@@ -29,6 +29,7 @@
     "bootstrap": "^5.0.2",
     "firebase": "^8.8.0",
     "jquery": "^3.6.0",
+    "ngx-ui-loader": "^11.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone": "^0.3.4",

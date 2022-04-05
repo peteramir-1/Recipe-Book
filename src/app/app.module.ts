@@ -41,6 +41,41 @@ import { MatCardModule } from '@angular/material/card';
 // *------- Pipe -------*/
 import { ShortenPipe } from './Pipes/shorten.pipe';
 
+// *------------------ NGX Loader Componenets -----------------*/
+import { NgxUiLoaderConfig, NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+
+
+const ngxUiLoaderConfigurations: NgxUiLoaderConfig = {
+  "bgsColor": "#0072e1",
+  "bgsOpacity": 0.8,
+  "bgsPosition": "bottom-right",
+  "bgsSize": 60,
+  "bgsType": "ball-spin-clockwise",
+  "blur": 5,
+  "delay": 0,
+  "fastFadeOut": true,
+  "fgsColor": "#0072e1",
+  "fgsPosition": "center-center",
+  "fgsSize": 60,
+  "fgsType": "ball-spin-clockwise",
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 120,
+  "logoUrl": "",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgb(40,40,40)",
+  "pbColor": "#0072e1",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": true,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+}
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -77,7 +112,9 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
 		MatMenuModule,
 		MatSnackBarModule,
 		MatCardModule,
-
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfigurations),
+    NgxUiLoaderRouterModule,
+    NgxUiLoaderHttpModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

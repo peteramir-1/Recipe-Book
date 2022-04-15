@@ -11,38 +11,38 @@ import { ingredient } from '../models/ingredient.model';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-	selector: 'app-shopping-list',
-	templateUrl: './shopping-list.component.html',
-	styleUrls: ['./shopping-list.component.scss'],
+  selector: 'app-shopping-list',
+  templateUrl: './shopping-list.component.html',
+  styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
-	ingredients: ingredient[] = [
-		new ingredient('tomato', '5'), 
-		new ingredient('salt', '5'),
-		new ingredient('apple', '2')
-	];
+  ingredients: ingredient[] = [
+    new ingredient('tomato', '5'),
+    new ingredient('salt', '5'),
+    new ingredient('apple', '2'),
+  ];
 
-	// *------- Fa Icons -------*/
-	readonly faClose = faTimes;
+  // *------- Fa Icons -------*/
+  readonly faClose = faTimes;
 
-	constructor(
-		private route: ActivatedRoute,
-		private shoppingListService: ShoppingListService
-	) {}
+  constructor(
+    private route: ActivatedRoute,
+    private shoppingListService: ShoppingListService
+  ) {}
 
-	ngOnInit(): void {
-		// this.route.data.subscribe((data: Data) => {
-		// 	this.ingredients = data.ingredients;
-		// });
-	}
+  ngOnInit(): void {
+    // this.route.data.subscribe((data: Data) => {
+    // 	this.ingredients = data.ingredients;
+    // });
+  }
 
-	/**
-	 * ? delete an ingredient from shopping list
-	 *
-	 * @param {number} i
-	 * @memberof ShoppingListComponent
-	 */
-	deleteIng(i: number): void {
-		this.shoppingListService.deleteAnIng(i);
-	}
+  /**
+   * ? delete an ingredient from shopping list
+   *
+   * @param i
+   * @memberof ShoppingListComponent
+   */
+  deleteIng(i: number): void {
+    this.shoppingListService.deleteAnIng(i);
+  }
 }

@@ -4,12 +4,12 @@ import { Component, Input } from '@angular/core';
 import { recipeModel } from '../../models/recipe.model';
 
 @Component({
-	selector: 'app-recipe-item',
-	templateUrl: './recipe-item.component.html',
-	styleUrls: ['./recipe-item.component.scss'],
+  selector: 'app-recipe-item',
+  templateUrl: './recipe-item.component.html',
+  styleUrls: ['./recipe-item.component.scss'],
 })
 export class RecipeItemComponent {
-	@Input() recipe: recipeModel;
+  @Input() recipe: recipeModel;
 
-	constructor() {}
+  constructor() {}
 }

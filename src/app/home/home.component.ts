@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 // *------------------ Services -----------------*/
@@ -11,71 +18,71 @@ import { recipeModel } from '../models/recipe.model';
 import * as $ from 'jquery';
 
 @Component({
-	selector: 'app-home',
-	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-	@ViewChild('signinPromoImg')
-	signinImg: ElementRef;
-	recipes: recipeModel[] = [];
-	indexes: number[] = [];
+  @ViewChild('signinPromoImg')
+  signinImg: ElementRef;
+  recipes: recipeModel[] = [];
+  indexes: number[] = [];
 
-	constructor(
-		private router: Router,
-		private recipeService: RecipeService,
-		private renderer: Renderer2
-		) {}
-	
-	ngOnInit(): void {
-		// this.selectImagesDisplay(3); // Intialize the recipes of the carouselW
-	}
-	
-	ngAfterViewInit(): void {
-		this.renderer.addClass(this.signinImg.nativeElement, 'zoomin');
-	}
+  constructor(
+    private router: Router,
+    private recipeService: RecipeService,
+    private renderer: Renderer2
+  ) {}
 
-	/*
-	 ** function that retun a sequence of numbers from start to end in an Array
-	 *
-	 * @param {number} start
-	 * @param {number} end
-	 * @param {number} [step=1]
-	 * @return {*}  {number[]}
-	 * @memberof HomeComponent
-	 */
-	range(start: number, end: number, step: number = 1): number[] {
-		const output = [];
-		if (typeof end === 'undefined') {
-			end = start;
-			start = 0;
-		}
-		for (let i = start; i < end; i += step) {
-			output.push(i);
-		}
-		return output;
-	}
+  ngOnInit(): void {
+    // this.selectImagesDisplay(3); // Intialize the recipes of the carouselW
+  }
 
-	/**
-	 * ? Function to output 3 random recipes from recipes object
-	 *
-	 * @param {number} imgNum
-	 * @memberof HomeComponent
-	 */
-	// selectImagesDisplay(imgNum: number): void {
-	// 	const max = this.recipeService.recipes.length,
-	// 		min = 0,
-	// 		range = this.range(min, max);
+  ngAfterViewInit(): void {
+    this.renderer.addClass(this.signinImg.nativeElement, 'zoomin');
+  }
 
-	// 	for (let i = 0; i < imgNum ; i++) {
-	// 		const index = Math.floor(Math.random() * range.length);
-	// 		this.recipes.push(this.recipeService.recipes[range[index]]);
-	// 		this.indexes.push(index);
-	// 		range.splice(index, 1);
-	// 	}
-	// }
+  /*
+   ** function that retun a sequence of numbers from start to end in an Array
+   *
+   * @param {number} start
+   * @param {number} end
+   * @param {number} [step=1]
+   * @return {*}  {number[]}
+   * @memberof HomeComponent
+   */
+  range(start: number, end: number, step: number = 1): number[] {
+    const output = [];
+    if (typeof end === 'undefined') {
+      end = start;
+      start = 0;
+    }
+    for (let i = start; i < end; i += step) {
+      output.push(i);
+    }
+    return output;
+  }
 
-	openRecipe(i: number): void {
-		this.router.navigate(['recipes', this.indexes[i] + 1]); // open recipe Clicked
-	}
+  /**
+   * ? Function to output 3 random recipes from recipes object
+   *
+   * @param imgNum
+   * @memberof HomeComponent
+   */
+  // selectImagesDisplay(imgNum: number): void {
+  // 	const max = this.recipeService.recipes.length,
+  // 		min = 0,
+  // 		range = this.range(min, max);
+
+  // 	for (let i = 0; i < imgNum ; i++) {
+  // 		const index = Math.floor(Math.random() * range.length);
+  // 		this.recipes.push(this.recipeService.recipes[range[index]]);
+  // 		this.indexes.push(index);
+  // 		range.splice(index, 1);
+  // 	}
+  // }
+
+  openRecipe(i: number): void {
+    this.router.navigate(['recipes', this.indexes[i] + 1]); // open recipe Clicked
+  }
 }

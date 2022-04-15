@@ -17,37 +17,39 @@ import { recipeDataResolver } from './recipe-data-resolver.service';
 
 //*------------------ Routes configurations -----------------*/
 const routes: Routes = [
-	{ path: 'home', component: HomeComponent, data: { aR: 'home' } },
-	{ path: '', redirectTo: '/home', pathMatch: 'full' },
-	{
-		path: 'recipes/:id/detail',
-		component: RecipeDetailsComponent,
-		resolve: { recipe: recipeDataResolver },
-		pathMatch: 'full'
-	},
-	{
-		path: 'recipes',
-		component: RecipesComponent,
-		data: { aR: 'recipes' },
-		resolve: { recipes: recipeDataResolver },
-		pathMatch: 'full'
-	},
-	{
-		path: 'shoppinglist',
-		component: ShoppingListComponent,
-		data: { aR: 'shoppingList' },
-		resolve: { ingredients: shoppingListResolver },
-	},
-	{ path: 'features', component: FeaturesComponent },
-	{ path: 'upgrade', component: UpgradeComponent },
-	{ path: 'about', component: AboutComponent },
-	{ path: ':num/error', component: ErrorHandleComponent },
-	{ path: '**', redirectTo: '/404/error' },
+  { path: 'home', component: HomeComponent, data: { aR: 'home' } },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'recipes/:id/detail',
+    component: RecipeDetailsComponent,
+    resolve: { recipe: recipeDataResolver },
+    pathMatch: 'full',
+  },
+  {
+    path: 'recipes',
+    component: RecipesComponent,
+    data: { aR: 'recipes' },
+    resolve: { recipes: recipeDataResolver },
+    pathMatch: 'full',
+  },
+  {
+    path: 'shoppinglist',
+    component: ShoppingListComponent,
+    data: { aR: 'shoppingList' },
+    resolve: { ingredients: shoppingListResolver },
+  },
+  { path: 'features', component: FeaturesComponent },
+  { path: 'upgrade', component: UpgradeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: ':num/error', component: ErrorHandleComponent },
+  { path: '**', redirectTo: '/404/error' },
 ];
 @NgModule({
-	imports: [RouterModule.forRoot(routes, {
-		scrollPositionRestoration: 'top'
-	  })],
-	exports: [RouterModule],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+    }),
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

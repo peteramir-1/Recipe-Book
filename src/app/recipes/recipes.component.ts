@@ -1,9 +1,9 @@
 import {
-    Component,
-	OnInit,
-	ViewChild,
-	AfterViewInit,
-	OnDestroy,
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 import { Router, ActivatedRoute, Data } from '@angular/router';
 
@@ -18,37 +18,38 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
 
 @Component({
-	selector: 'app-recipes',
-	templateUrl: './recipes.component.html',
-	styleUrls: ['./recipes.component.scss'],
+  selector: 'app-recipes',
+  templateUrl: './recipes.component.html',
+  styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
-	public recipes: recipeModel[];
-    
-	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private recipeService: RecipeService
-	) {}
+  public recipes: recipeModel[];
 
-	ngOnInit(): void {
-		this.route.data.subscribe((data: Data) => {
-			this.recipes = data.recipes; // recive component DATA
-		});
-	}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private recipeService: RecipeService
+  ) {}
 
-	ngAfterViewInit(): void {}
+  ngOnInit(): void {
+    this.route.data.subscribe((data: Data) => {
+      this.recipes = data.recipes; // recive component DATA
+    });
+  }
 
-	ngOnDestroy(): void {}
+  ngAfterViewInit(): void {}
 
-	/**
-	 *
-	 * ? used for opening detail panel to see the recipe detail
-	 * @param {number} i
-	 * @memberof RecipesComponent
-	 */
-	openDetail(id: number): void {
-		const route = `${id}/detail`;
-		this.router.navigate([route], { relativeTo: this.route });
-	}
+  ngOnDestroy(): void {}
+
+  /**
+   *
+   * ? used for opening detail panel to see the recipe detail
+   *
+   * @param i
+   * @memberof RecipesComponent
+   */
+  openDetail(id: number): void {
+    const route = `${id}/detail`;
+    this.router.navigate([route], { relativeTo: this.route });
+  }
 }

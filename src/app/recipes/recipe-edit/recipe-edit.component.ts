@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Data, Router, ParamMap } from '@angular/router';
 
 // *------- Services -------*/
@@ -23,7 +27,7 @@ export class RecipeEditComponent implements OnInit {
   isEditMode: boolean;
 
   // *------- Forms  -------*/
-  recipeForm: FormGroup;
+  recipeForm: UntypedFormGroup;
 
   constructor(
     private router: Router,
@@ -33,20 +37,22 @@ export class RecipeEditComponent implements OnInit {
 
   ngOnInit(): void {
     // ? Recipe form creation
-    this.recipeForm = new FormGroup({
-      name: new FormControl(null, [
+    this.recipeForm = new UntypedFormGroup({
+      name: new UntypedFormControl(null, [
         Validators.required,
         this.recipeNameValidator,
       ]),
-      description: new FormControl(null, [
+      description: new UntypedFormControl(null, [
         Validators.required,
         this.recipeNameValidator,
       ]),
-      preparation: new FormControl(null, Validators.required),
-      imageUrl: new FormControl(null, Validators.required),
-      ingredients: new FormGroup({
-        ingName: new FormControl(null),
-        ingNum: new FormControl(null, [Validators.pattern(/^[0-9]+[0-9]*$/)]),
+      preparation: new UntypedFormControl(null, Validators.required),
+      imageUrl: new UntypedFormControl(null, Validators.required),
+      ingredients: new UntypedFormGroup({
+        ingName: new UntypedFormControl(null),
+        ingNum: new UntypedFormControl(null, [
+          Validators.pattern(/^[0-9]+[0-9]*$/),
+        ]),
       }),
     });
 
@@ -78,7 +84,7 @@ export class RecipeEditComponent implements OnInit {
    * @return
    * @memberof RecipeEditComponent
    */
-  recipeNameValidator(control: FormControl): { [s: string]: boolean } {
+  recipeNameValidator(control: UntypedFormControl): { [s: string]: boolean } {
     const recipeName = control.value;
     if (recipeName != null) {
       const patternCheck = recipeName

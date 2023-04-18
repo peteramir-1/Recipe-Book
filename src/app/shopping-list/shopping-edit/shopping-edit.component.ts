@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormControl,
+  Validators,
+} from '@angular/forms';
 
 // *------- Services -------*/
 import { ShoppingListService } from './../../services/shopping-list.service';
@@ -10,14 +14,17 @@ import { ShoppingListService } from './../../services/shopping-list.service';
   styleUrls: ['./shopping-edit.component.scss'],
 })
 export class ShoppingEditComponent implements OnInit {
-  shoppingListForm: FormGroup;
+  shoppingListForm: UntypedFormGroup;
 
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
-    this.shoppingListForm = new FormGroup({
-      ingName: new FormControl(null, Validators.required),
-      ingNum: new FormControl(null, [Validators.min(1), Validators.required]),
+    this.shoppingListForm = new UntypedFormGroup({
+      ingName: new UntypedFormControl(null, Validators.required),
+      ingNum: new UntypedFormControl(null, [
+        Validators.min(1),
+        Validators.required,
+      ]),
     });
   }
 

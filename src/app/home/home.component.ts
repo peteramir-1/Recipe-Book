@@ -14,9 +14,6 @@ import { RecipeService } from './../services/recipe.service';
 // *------------------ Models -----------------*/
 import { recipeModel } from '../models/recipe.model';
 
-// *------------------ Jquery -----------------*/
-import * as $ from 'jquery';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

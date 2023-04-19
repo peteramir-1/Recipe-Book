@@ -1,8 +1,3 @@
-// Bootstrap imports
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins/breakpoints";
-
 .row {
   overflow: hidden;
   padding: 0;
@@ -18,23 +13,4 @@ div#mat-menu-panel-0 {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-// Media-breakpoints:
-// :::::::::::::::::
-
-// Large devices
-@include media-breakpoint-down(lg) {
-}
-
-// Medium devices
-@include media-breakpoint-down(md) {
-}
-
-// Small devices
-@include media-breakpoint-down(sm) {
-}
-
-// Extra small devices
-@include media-breakpoint-down(xs) {
 }

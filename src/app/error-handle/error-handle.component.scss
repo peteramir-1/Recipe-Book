@@ -1,31 +1,7 @@
-// Bootstrap imports
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables.scss";
-@import "~bootstrap/scss/mixins/breakpoints";
-
 button {
   padding: 0.5rem 3rem;
 }
 
 img {
   height: 32vw;
-}
-
-// Media-breakpoints:
-// :::::::::::::::::
-
-// Large devices
-@include media-breakpoint-down(lg) {
-}
-
-// Medium devices
-@include media-breakpoint-down(md) {
-}
-
-// Small devices
-@include media-breakpoint-down(sm) {
-}
-
-// Extra small devices
-@include media-breakpoint-down(xs) {
 }

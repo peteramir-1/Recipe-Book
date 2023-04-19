@@ -1,11 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@600&display=swap");
 
-// Bootstrap imports
-@import "../../../node_modules/bootstrap/scss/functions.scss";
-@import "../../../node_modules/bootstrap/scss/variables.scss";
-@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
-
 // keyframes
 @keyframes zoomIn {
   from {
@@ -45,12 +40,12 @@
   -webkit-animation-name: zoomIn;
   -moz-animation-name: zoomIn;
   -o-animation-name: zoomIn;
-  
+
   animation-duration: 7s;
   -webkit-animation-duration: 7s;
   -moz-animation-duration: 7s;
   -o-animation-duration: 7s;
-  
+
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   -moz-animation-timing-function: ease-in-out;
@@ -60,23 +55,4 @@
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   -o-animation-delay: 1s;
-}
-
-// Media-breakpoints:
-// :::::::::::::::::
-
-// Extra small devices
-@include media-breakpoint-down(xs) {
-}
-
-// Small devices
-@include media-breakpoint-up(sm) {
-}
-
-// Medium devices
-@include media-breakpoint-up(md) {
-}
-
-// Large devices
-@include media-breakpoint-up(lg) {
 }

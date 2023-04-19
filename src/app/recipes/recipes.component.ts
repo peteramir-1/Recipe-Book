@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Data } from '@angular/router';
 
 // *------- Services -------*/
@@ -13,16 +7,12 @@ import { RecipeService } from './../services/recipe.service';
 // *------- Models -------*/
 import { recipeModel } from '../models/recipe.model';
 
-// *------- Mat Component -------*/
-import { MatDrawer } from '@angular/material/sidenav';
-import { Subscription } from 'rxjs';
-
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss'],
 })
-export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
+export class RecipesComponent implements OnInit {
   public recipes: recipeModel[];
 
   constructor(
@@ -36,10 +26,6 @@ export class RecipesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.recipes = data.recipes; // recive component DATA
     });
   }
-
-  ngAfterViewInit(): void {}
-
-  ngOnDestroy(): void {}
 
   /**
    *

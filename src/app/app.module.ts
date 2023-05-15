@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from '@angular/cdk/layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 // *------------------ Router -----------------*/
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -26,7 +23,7 @@ import { FeaturesComponent } from './features/features.component';
 import { FooterComponent } from './footer/footer.component';
 
 // *------------------ Icon Library -----------------*/
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SvgIconModule } from './shared/components/svg-icon/svg-icon.module';
 
 // *------- Pipe -------*/
 import { ShortenPipe } from './Pipes/shorten.pipe';
@@ -93,14 +90,11 @@ const ngxUiLoaderConfigurations: NgxUiLoaderConfig = {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule,
-    FlexLayoutModule,
-    LayoutModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfigurations),
     NgxUiLoaderRouterModule,
     NgxUiLoaderHttpModule,
+    SvgIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

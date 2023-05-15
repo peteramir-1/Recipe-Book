@@ -1,5 +1,7 @@
-html, body { height: 100%; overflow: overlay; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 *::-webkit-scrollbar {
   width: 1em;

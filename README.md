@@ -1,6 +1,11 @@
 # RecipeBook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+ A simple demo of Recipes rating appliccation.
+ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.11.
+
+**Version**: 0.1
+
+**Wireframe link**: https://mockittapp.wondershare.com/proto/e8D3CWisrtctbexSLVLwFf/sharing?view_mode=read_only#Recipe-book-分享  
 
 ## Development server
 

@@ -7,11 +7,12 @@
     "settings": {},
     "extensions": {
         "recommendations": [
-            "johnpapa.angular2",
-            "johnpapa.angular-essentials",
-            "formulahendry.auto-rename-tag",
-            "formulahendry.auto-complete-tag",
-            "svipas.prettier-plus"
+          "johnpapa.angular2",
+          "johnpapa.angular-essentials",
+          "formulahendry.auto-rename-tag",
+          "formulahendry.auto-complete-tag",
+          "svipas.prettier-plus",
+          "dbaeumer.vscode-eslint"
         ]
     }
 }
